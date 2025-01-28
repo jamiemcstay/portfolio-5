@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-As a **role** **capability** ** received benefit**
+As a **role** **capability** **received benefit**
 
 Acceptance Criteria: 
 
