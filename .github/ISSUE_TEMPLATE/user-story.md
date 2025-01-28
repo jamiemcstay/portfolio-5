@@ -7,4 +7,12 @@ assignees: ''
 
 ---
 
-As a **role** I can **capability** so that **received benefit**
+## User Story
+**As a** [role],  
+**I want** [feature],  
+**So that** [benefit].
+
+## Acceptance Criteria
+- [ ] Criterion 1  
+- [ ] Criterion 2  
+- [ ] Criterion 3
