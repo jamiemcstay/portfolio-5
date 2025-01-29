@@ -2,6 +2,14 @@ html {
     height: 100%
 }
 
+
+
 body {
     /* background-color: blue; */
+}
+
+@media screen and (max-width: 992px) {
+    .main-logo-link {
+        display: none;
+    }
 }
