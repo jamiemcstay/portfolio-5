@@ -1,0 +1,41 @@
+[{
+        "model": "menu.category",
+        "pk": 1,
+        "fields": {
+            "name": "mains",
+            "friendly_name": "Main Dishes"
+        }
+    },
+    {
+        "model": "menu.category",
+        "pk": 2,
+        "fields": {
+            "name": "most_popular",
+            "friendly_name": "Most Popular"
+        }
+    },
+    {
+        "model": "menu.category",
+        "pk": 3,
+        "fields": {
+            "name": "starters",
+            "friendly_name": "Starters"
+        }
+    },
+    {
+        "model": "menu.category",
+        "pk": 4,
+        "fields": {
+            "name": "sides",
+            "friendly_name": "Sides"
+        }
+    },
+    {
+        "model": "menu.category",
+        "pk": 5,
+        "fields": {
+            "name": "soft_drinks",
+            "friendly_name": "Soft Drinks"
+        }
+    }
+]

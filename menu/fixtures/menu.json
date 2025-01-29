@@ -1,0 +1,221 @@
+[{
+        "model": "menu.menuitem",
+        "pk": 1,
+        "fields": {
+            "name": "Shoyu Ramen",
+            "description": "A savory soy sauce-based ramen with pork belly, bamboo shoots, and a soft-boiled egg.",
+            "price": 12.99,
+            "image": "images/default.jpg",
+            "category": [1, 2, 3]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 2,
+        "fields": {
+            "name": "Miso Ramen",
+            "description": "Rich and creamy miso-based ramen with tofu, corn, and nori.",
+            "price": 13.49,
+            "image": "images/default.jpg",
+            "category": [1, 2, 3]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 3,
+        "fields": {
+            "name": "Spicy Ramen",
+            "description": "A fiery broth with chili paste, ground pork, and a spicy kick.",
+            "price": 14.99,
+            "image": "images/default.jpg",
+            "category": [1, 2, 3]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 4,
+        "fields": {
+            "name": "Vegetarian Ramen",
+            "description": "A vegetarian ramen made with a rich broth of miso and vegetables, topped with tofu and greens.",
+            "price": 13.99,
+            "image": "images/default.jpg",
+            "category": [1, 2, 3]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 5,
+        "fields": {
+            "name": "Chashu Ramen",
+            "description": "Tender slices of pork belly in a savory soy-based broth, topped with a soft-boiled egg.",
+            "price": 15.49,
+            "image": "images/default.jpg",
+            "category": [1, 2, 3]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 6,
+        "fields": {
+            "name": "Tonkotsu Ramen",
+            "description": "A rich and creamy pork broth with thick noodles, topped with pork belly and a soft-boiled egg.",
+            "price": 16.99,
+            "image": "images/default.jpg",
+            "category": [1, 2, 3]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 7,
+        "fields": {
+            "name": "Gyoza",
+            "description": "Crispy pork dumplings served with a soy dipping sauce.",
+            "price": 6.99,
+            "image": "images/default.jpg",
+            "category": [4, 5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 8,
+        "fields": {
+            "name": "Edamame",
+            "description": "Steamed and salted soybeans, perfect for sharing.",
+            "price": 5.49,
+            "image": "images/default.jpg",
+            "category": [4, 5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 9,
+        "fields": {
+            "name": "Takoyaki",
+            "description": "Octopus-filled savory Japanese balls topped with bonito flakes and takoyaki sauce.",
+            "price": 7.49,
+            "image": "images/default.jpg",
+            "category": [4, 5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 10,
+        "fields": {
+            "name": "Tempura",
+            "description": "Lightly battered and fried shrimp and vegetables.",
+            "price": 8.99,
+            "image": "images/default.jpg",
+            "category": [4, 5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 11,
+        "fields": {
+            "name": "Spring Rolls",
+            "description": "Crispy and savory rolls filled with vegetables and served with dipping sauce.",
+            "price": 5.99,
+            "image": "images/default.jpg",
+            "category": [4, 5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 12,
+        "fields": {
+            "name": "Chashu Don",
+            "description": "Steamed rice topped with tender slices of marinated pork belly and green onions.",
+            "price": 8.99,
+            "image": "images/default.jpg",
+            "category": [4, 5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 13,
+        "fields": {
+            "name": "Ramune Soda",
+            "description": "A refreshing Japanese carbonated drink with a marble stopper.",
+            "price": 3.49,
+            "image": "images/default.jpg",
+            "category": [5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 14,
+        "fields": {
+            "name": "Iced Green Tea",
+            "description": "Refreshing cold brewed green tea, perfect for cooling off.",
+            "price": 2.99,
+            "image": "images/default.jpg",
+            "category": [5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 15,
+        "fields": {
+            "name": "Matcha Latte",
+            "description": "A smooth and creamy green tea latte, made with authentic matcha powder.",
+            "price": 4.99,
+            "image": "images/default.jpg",
+            "category": [5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 16,
+        "fields": {
+            "name": "Lemonade",
+            "description": "Freshly squeezed lemonade served over ice.",
+            "price": 3.49,
+            "image": "images/default.jpg",
+            "category": [5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 17,
+        "fields": {
+            "name": "Coca-Cola",
+            "description": "Classic carbonated soft drink.",
+            "price": 1.99,
+            "image": "images/default.jpg",
+            "category": [5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 18,
+        "fields": {
+            "name": "Orange Fanta",
+            "description": "A tangy, sweet orange-flavored soft drink.",
+            "price": 2.49,
+            "image": "images/default.jpg",
+            "category": [5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 19,
+        "fields": {
+            "name": "Karaage",
+            "description": "Japanese-style fried chicken, crispy on the outside and tender on the inside.",
+            "price": 9.99,
+            "image": "images/default.jpg",
+            "category": [3, 5]
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 20,
+        "fields": {
+            "name": "Sashimi",
+            "description": "Fresh slices of raw fish, served with soy sauce and wasabi.",
+            "price": 12.49,
+            "image": "images/default.jpg",
+            "category": [3, 5]
+        }
+    }
+]
