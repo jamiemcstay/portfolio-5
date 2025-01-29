@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Menu</h2>
+        </div>
+    </div>
+
+    <div class="row most-popular">
+        <h3>Most Popular</h3>
+        {% for item in categorized_items.most_popular %}
+        <div class="col-md-4">
+            <div class="card">
+                {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                {% elif item.image_url %}
+                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>€{{ item.price }}</strong></p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No items available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="row starters">
+        <h3>Starters</h3>
+        {% for item in categorized_items.starters %}
+        <div class="col-md-4">
+            <div class="card">
+                {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                {% elif item.image_url %}
+                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>€{{ item.price }}</strong></p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No items available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="row mains">
+        <h3>Mains</h3>
+        {% for item in categorized_items.mains %}
+        <div class="col-md-4">
+            <div class="card">
+                {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                {% elif item.image_url %}
+                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>€{{ item.price }}</strong></p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No items available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="row sides">
+        <h3>Sides</h3>
+        {% for item in categorized_items.sides %}
+        <div class="col-md-4">
+            <div class="card">
+                {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                {% elif item.image_url %}
+                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>€{{ item.price }}</strong></p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No items available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="row soft-drinks">
+        <h3>Soft Drinks</h3>
+        {% for item in categorized_items.soft_drinks %}
+        <div class="col-md-4">
+            <div class="card">
+                {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                {% elif item.image_url %}
+                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>€{{ item.price }}</strong></p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No items available.</p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
