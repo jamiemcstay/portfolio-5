@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import MenuItem
+from .models import MenuItem, Category
 
 # Create your views here.
 
@@ -13,15 +13,13 @@ def menu(request):
 
     # Organizing items by category
     categorized_items = {
-        "most_popular": menu_items.filter(category__name="Most Popular"),
-        "starters": menu_items.filter(category__name__iexact="Starters"),
-        "mains": menu_items.filter(category__name__iexact="Mains"),
-        "sides": menu_items.filter(category__name__iexact="Sides"),
-        "soft_drinks": menu_items.filter(category__name__iexact="Soft Drinks"),
+        "most_popular": menu_items.filter(category__name="most_popular"),
+        "starters": menu_items.filter(category__name__iexact="starters"),
+        "mains": menu_items.filter(category__name__iexact="mains"),
+        "sides": menu_items.filter(category__name__iexact="sides"),
+        "soft_drinks": menu_items.filter(category__name__iexact="soft_drinks"),
     }
-
-    print("All Menu Items:", menu_items)
-    print("Starters:", menu_items.filter(category__name="Starters"))
+    
 
     context = {
         "categorized_items": categorized_items,

@@ -8,17 +8,19 @@
             <h2>Menu</h2>
         </div>
     </div>
-
+    <h3>Most Popular</h3>
     <div class="row most-popular">
-        <h3>Most Popular</h3>
+
         {% for item in categorized_items.most_popular %}
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 {% if item.image %}
-                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
-                {% elif item.image_url %}
-                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
-                {% endif %}
+                <a href="#" data-toggle="modal" data-target="#itemModal{{ item.id}}">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% elif item.image_url %}
+                    <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% endif %}
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
                     <p class="card-text">{{ item.description }}</p>
@@ -26,21 +28,53 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="itemModal{{ item.id }}" tabindex="-1" role="dialog"
+            aria-labelledby="itemModalLabel{{ item.id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel{{ item.id }}">{{ item.name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% elif item.image_url %}
+                        <img src="{{ item.image_url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% endif %}
+                        <p>{{ item.description }}</p>
+                        <p><strong>€{{ item.price }}</strong></p>
+                        <form method="POST" action="#">
+                            {% csrf_token %}
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1"
+                                class="form-control w-50 mx-auto">
+                            <button type="submit" class="btn btn-success mt-3">Add to Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {% empty %}
         <p>No items available.</p>
         {% endfor %}
     </div>
-
+    <h3>Starters</h3>
     <div class="row starters">
-        <h3>Starters</h3>
+
         {% for item in categorized_items.starters %}
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 {% if item.image %}
-                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
-                {% elif item.image_url %}
-                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
-                {% endif %}
+                <a href="#" data-toggle="modal" data-target="#itemModal{{ item.id}}">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% elif item.image_url %}
+                    <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% endif %}
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
                     <p class="card-text">{{ item.description }}</p>
@@ -48,21 +82,52 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="itemModal{{ item.id }}" tabindex="-1" role="dialog"
+            aria-labelledby="itemModalLabel{{ item.id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel{{ item.id }}">{{ item.name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% elif item.image_url %}
+                        <img src="{{ item.image_url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% endif %}
+                        <p>{{ item.description }}</p>
+                        <p><strong>€{{ item.price }}</strong></p>
+                        <form method="POST" action="#">
+                            {% csrf_token %}
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1"
+                                class="form-control w-50 mx-auto">
+                            <button type="submit" class="btn btn-success mt-3">Add to Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% empty %}
         <p>No items available.</p>
         {% endfor %}
     </div>
-
+    <h3>Mains</h3>
     <div class="row mains">
-        <h3>Mains</h3>
+
         {% for item in categorized_items.mains %}
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 {% if item.image %}
-                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
-                {% elif item.image_url %}
-                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
-                {% endif %}
+                <a href="#" data-toggle="modal" data-target="#itemModal{{ item.id}}">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% elif item.image_url %}
+                    <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% endif %}
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
                     <p class="card-text">{{ item.description }}</p>
@@ -70,21 +135,52 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="itemModal{{ item.id }}" tabindex="-1" role="dialog"
+            aria-labelledby="itemModalLabel{{ item.id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel{{ item.id }}">{{ item.name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% elif item.image_url %}
+                        <img src="{{ item.image_url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% endif %}
+                        <p>{{ item.description }}</p>
+                        <p><strong>€{{ item.price }}</strong></p>
+                        <form method="POST" action="#">
+                            {% csrf_token %}
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1"
+                                class="form-control w-50 mx-auto">
+                            <button type="submit" class="btn btn-success mt-3">Add to Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% empty %}
         <p>No items available.</p>
         {% endfor %}
     </div>
-
+    <h3>Sides</h3>
     <div class="row sides">
-        <h3>Sides</h3>
+
         {% for item in categorized_items.sides %}
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 {% if item.image %}
-                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
-                {% elif item.image_url %}
-                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
-                {% endif %}
+                <a href="#" data-toggle="modal" data-target="#itemModal{{ item.id}}">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% elif item.image_url %}
+                    <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% endif %}
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
                     <p class="card-text">{{ item.description }}</p>
@@ -92,25 +188,85 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="itemModal{{ item.id }}" tabindex="-1" role="dialog"
+            aria-labelledby="itemModalLabel{{ item.id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel{{ item.id }}">{{ item.name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% elif item.image_url %}
+                        <img src="{{ item.image_url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% endif %}
+                        <p>{{ item.description }}</p>
+                        <p><strong>€{{ item.price }}</strong></p>
+                        <form method="POST" action="#">
+                            {% csrf_token %}
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1"
+                                class="form-control w-50 mx-auto">
+                            <button type="submit" class="btn btn-success mt-3">Add to Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% empty %}
         <p>No items available.</p>
         {% endfor %}
     </div>
-
+    <h3>Soft Drinks</h3>
     <div class="row soft-drinks">
-        <h3>Soft Drinks</h3>
+
         {% for item in categorized_items.soft_drinks %}
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 {% if item.image %}
-                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
-                {% elif item.image_url %}
-                <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
-                {% endif %}
+                <a href="#" data-toggle="modal" data-target="#itemModal{{ item.id}}">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% elif item.image_url %}
+                    <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% endif %}
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
                     <p class="card-text">{{ item.description }}</p>
                     <p class="card-text"><strong>€{{ item.price }}</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="itemModal{{ item.id }}" tabindex="-1" role="dialog"
+            aria-labelledby="itemModalLabel{{ item.id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel{{ item.id }}">{{ item.name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% elif item.image_url %}
+                        <img src="{{ item.image_url }}" class="img-fluid" alt="{{ item.name }}">
+                        {% endif %}
+                        <p>{{ item.description }}</p>
+                        <p><strong>€{{ item.price }}</strong></p>
+                        <form method="POST" action="#">
+                            {% csrf_token %}
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1"
+                                class="form-control w-50 mx-auto">
+                            <button type="submit" class="btn btn-success mt-3">Add to Order</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,3 +277,14 @@
 
 </div>
 {% endblock %}
+
+<script>
+    $(document).ready(function () {
+        $('#itemModal{{ item.id }}').on('shown.bs.modal', function () {
+            $('body').addClass('modal-open');
+        });
+        $('#itemModal{{ item.id }}').on('hidden.bs.modal', function () {
+            $('body').removeClass('modal-open');
+        });
+    });
+</script>
