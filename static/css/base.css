@@ -9,14 +9,10 @@ html {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    /* semi-transparent black */
     display: none;
-    /* hidden by default */
     z-index: 1040;
-    /* Make sure it's under the modal */
 }
 
-/* When the modal is shown, overlay becomes visible */
 body.modal-open .overlay {
     display: block;
 }
