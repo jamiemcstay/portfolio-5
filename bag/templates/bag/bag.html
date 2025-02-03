@@ -40,7 +40,16 @@
                                 <p class="my-0">${{ item.menu_item.price }}</p>
                             </td>
                             <td class="py-3 w-25">
-                                <p class="my-0">{{ item.quantity }}</p>
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ item.id }}" id="id_qty_{{ item.id }}">
+                                        </div>
+                                        <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Order">
+                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    </div>
+                                </form>
                             </td>
                             <td class="py-3">
                                 <p class="my-0">${{ item.menu_item.price }}</p>
