@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'home',
     'menu',
     'bag',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -163,4 +164,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STANDARD_DELIVERY_PERCENTAGE = 10
-# FREE_DELIVERY_THRESHOLD = 50
+FREE_DELIVERY_THRESHOLD = 50
