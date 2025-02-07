@@ -17,4 +17,14 @@
 
     });
 
+    //Open modal for menu items
+    $(document).ready(function () {
+        $('#itemModal{{ item.id }}').on('shown.bs.modal', function () {
+            $('body').addClass('modal-open');
+        });
+        $('#itemModal{{ item.id }}').on('hidden.bs.modal', function () {
+            $('body').removeClass('modal-open');
+        });
+    });
+
 </script>

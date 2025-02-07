@@ -89,8 +89,12 @@
 
 </div>
 {% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+{% include 'menu/includes/menu_js.html' %}
+{% endblock %}
 
-<script>
+<!-- <script>
     $(document).ready(function () {
         $('#itemModal{{ item.id }}').on('shown.bs.modal', function () {
             $('body').addClass('modal-open');
@@ -99,4 +103,4 @@
             $('body').removeClass('modal-open');
         });
     });
-</script>
+</script> -->
