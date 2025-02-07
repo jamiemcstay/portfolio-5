@@ -9,6 +9,7 @@ def menu(request):
     """
 
     menu_items = MenuItem.objects.all()
+    # category = Category.objects.all()
 
 
     # Organizing items by category
@@ -19,10 +20,20 @@ def menu(request):
         "sides": menu_items.filter(category__name__iexact="sides"),
         "soft_drinks": menu_items.filter(category__name__iexact="soft_drinks"),
     }
+
+    # for category_key, items in categorized_items.items():
+    #     for item in items:
+    #         if item.category and item.category.name:
+    #             item.category.name = item.category.name.replace('_', ' ')
+
     
+    formatted_categorized_items = {}
+    for category_key, items in categorized_items.items():
+        formatted_category_key = category_key.replace('_', ' ').title()
+        formatted_categorized_items[formatted_category_key] = items
 
     context = {
-        "categorized_items": categorized_items,
+        "categorized_items": formatted_categorized_items,
     }
 
 
