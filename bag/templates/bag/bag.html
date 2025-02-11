@@ -40,7 +40,7 @@
                                 <p class="my-0">${{ item.menu_item.price }}</p>
                             </td>
                             <td class="py-3 w-25">
-                                <form method="POST" action="">
+                                <form method="POST" class="update-form" action="">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <div class="input-group">
@@ -62,10 +62,11 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Order">
                                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                     </div>
                                 </form>
+                                <a class="update-link text-muted"><small>Update</small></a>
+                                <a class="remove-item text-muted" id="remove_{{ item.itm_id }}"><small>Remove</small></a>
                             </td>
                             <td class="py-3">
                                 <p class="my-0">${{ item.menu_item.price }}</p>
