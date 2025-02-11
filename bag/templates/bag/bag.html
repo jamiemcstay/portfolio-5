@@ -44,7 +44,23 @@
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ item.id }}" id="id_qty_{{ item.id }}">
+                                            <div class="input-group-prepend">
+                                                <button type="button" class="decrement-qty btn btn-outline-secondary" data-item_id="{{ item.item_id }}">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </div>
+                            
+                                            <!-- Quantity Input -->
+                                            <input class="form-control qty_input text-center" type="number" name="quantity" 
+                                                value="{{ item.quantity }}" min="1" max="99"
+                                                data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                            
+                                            <!-- Increase Quantity Button -->
+                                            <div class="input-group-append">
+                                                <button type="button" class="increment-qty btn btn-outline-secondary" data-item_id="{{ item.item_id }}">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                         <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Order">
                                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -94,4 +110,8 @@
     </div>
 </div>
 
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+{% include 'bag/includes/bag_js.html' %}
 {% endblock %}
