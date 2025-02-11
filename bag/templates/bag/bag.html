@@ -40,7 +40,7 @@
                                 <p class="my-0">${{ item.menu_item.price }}</p>
                             </td>
                             <td class="py-3 w-25">
-                                <form method="POST" class="update-form" action="">
+                                <form method="POST" class="update-form" action="{% url 'adjust_bag' item.item_id %}">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <div class="input-group">
@@ -66,8 +66,9 @@
                                     </div>
                                 </form>
                                 <a class="update-link text-muted"><small>Update</small></a>
-                                <a class="remove-item text-muted" id="remove_{{ item.itm_id }}"><small>Remove</small></a>
-                            </td>
+                                <a class="remove-item text-muted" id="remove_{{ item.item_id }}">
+                                    <small>Remove</small>
+                                </a>
                             <td class="py-3">
                                 <p class="my-0">${{ item.menu_item.price }}</p>
                             </td>

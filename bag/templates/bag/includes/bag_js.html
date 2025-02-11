@@ -69,14 +69,19 @@
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('size');
-        var url = `/bag/remove/${itemId}`;
+        var url = `/bag/remove/${itemId}/`;
+        console.log('Request URL:', url);
         var data = {'csrfmiddlewaretoken': csrfToken};
 
+        
         $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
+            .done(function() {
+                location.reload();
+            })
+            .fail(function(xhr, status, error) {
+                console.error('Error:', error)
+                console.log('Response:', xhr.responseText);
+            });
     })
 
 
