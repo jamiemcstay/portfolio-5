@@ -13,6 +13,21 @@ html {
     z-index: 1040;
 }
 
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 10000;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
 body.modal-open .overlay {
     display: block;
 }
