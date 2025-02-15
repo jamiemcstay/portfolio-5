@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+from django.http import JsonResponse
 
 from .models import UserAccount
 from .forms import UserAccountForm
@@ -32,15 +33,26 @@ def account(request):
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
-    messages.info(request, (
-        f'This is a past order number {order_number}.'
-        'A confirmation email was sent.'
-    ))
+    order_data = {
+        "order_number": order.order_number,
+        "date": order.date.strftime("%Y-%m-%d %H:%M:%S"),
+        "total": float(order.grand_total),
+        "items": [
+            {
+                "name": item.menu_item.name,
+                "price": float(item.menu_item.price),
+                "quantity": item.quantity,
+            }
+            for item in order.lineitems.all()
 
-    template = 'accounts/checkout_success.html'
-    context = {
-        'order': order,
-        'from_account': True,
+        ]
     }
 
-    return render(request, template, context)
+    # template = 'checkout/checkout_success.html'
+    # context = {
+    #     'order': order,
+    #     'from_account': True,
+    # }
+
+    # return render(request, template, context)
+    return JsonResponse(order_data)
