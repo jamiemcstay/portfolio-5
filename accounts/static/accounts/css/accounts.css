@@ -1,3 +1,8 @@
+.order-history {
+    max-height: 416px;
+    overflow: auto;
+}
+
 #account-update-form .form-control {
     color: black;
 }

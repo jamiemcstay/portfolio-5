@@ -4,6 +4,8 @@ from django.contrib import messages
 from .models import UserAccount
 from .forms import UserAccountForm
 
+from checkout.models import Order
+
 
 def account(request):
 
@@ -23,6 +25,22 @@ def account(request):
         'form': form,
         'orders': orders,
         'account': account,
+    }
+
+    return render(request, template, context)
+
+def order_history(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.info(request, (
+        f'This is a past order number {order_number}.'
+        'A confirmation email was sent.'
+    ))
+
+    template = 'accounts/checkout_success.html'
+    context = {
+        'order': order,
+        'from_account': True,
     }
 
     return render(request, template, context)
