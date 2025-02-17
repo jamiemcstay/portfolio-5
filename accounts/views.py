@@ -17,7 +17,7 @@ def account(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Account details updated successfully!')
-    
+
     form = UserAccountForm(instance=account)
     orders = account.orders.all()
 
@@ -29,6 +29,7 @@ def account(request):
     }
 
     return render(request, template, context)
+
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
