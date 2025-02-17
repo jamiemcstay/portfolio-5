@@ -30,6 +30,11 @@
                     <p class="card-text">{{ item.description }}</p>
                     <p class="card-text"><strong>€{{ item.price }}</strong></p>
                 </div>
+                {% if user.is_superuser %}
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'edit_menu_item' item.id %}" class="btn btn-warning">Edit</a>
+                </div>
+                {% endif %}
 
             </div>
         </div>

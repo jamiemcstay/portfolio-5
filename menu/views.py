@@ -47,3 +47,19 @@ def add_menu_item(request):
     else:
         form = MenuItemForm()
     return render(request, 'menu/menu_form.html', {'form': form})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def edit_menu_item(request, item_id):
+
+    menu_item = get_object_or_404(MenuItem, id=item_id)
+
+    if request.method == "POST":
+        form = MenuItemForm(request.POST, request.FILES, instance=menu_item)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Menu item updated successfully")
+            return redirect('menu')
+    else:
+        form = MenuItemForm(instance=menu_item)
+    return render(request, 'menu/edit_menu_item.html', {'form': form, 'menu_item': menu_item})
