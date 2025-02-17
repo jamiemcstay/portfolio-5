@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 from .forms import ContactForm
+from .models import ContactMessage
 
 
 # Create your views here.
@@ -13,15 +14,18 @@ def contact(request):
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
 
-        send_mail(
-            suject=f"Contact Form Submission from {name}",
-            message=f"From: {name} ({email})\n\n{message}",
-            recipient_list=['jamiemcstay@hotmail.com'],
-            fail_silently=False,
-        )
+            send_mail(
+                subject=f"Contact Form Submission from {name}",
+                message=f"From: {name} ({email})\n\n{message}",
+                from_email='jamiemcstay@hotmail.com',
+                recipient_list=['jamiemcstay@hotmail.com'],
+                fail_silently=False,
+            )
 
-        messages.success(request, 'Your message has been sent')
-        return redirect('contact')
+            ContactMessage.objects.create(name=name, email=email, message=message)
+
+            messages.success(request, 'Your message has been sent')
+            return redirect('contact')
     else:
         form = ContactForm()
 
