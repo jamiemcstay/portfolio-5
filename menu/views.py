@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib import messages
 from .models import MenuItem, Category
+from .forms import MenuItemForm
 
 # Create your views here.
 
@@ -21,12 +24,6 @@ def menu(request):
         "soft_drinks": menu_items.filter(category__name__iexact="soft_drinks"),
     }
 
-    # for category_key, items in categorized_items.items():
-    #     for item in items:
-    #         if item.category and item.category.name:
-    #             item.category.name = item.category.name.replace('_', ' ')
-
-    
     formatted_categorized_items = {}
     for category_key, items in categorized_items.items():
         formatted_category_key = category_key.replace('_', ' ').title()
@@ -35,6 +32,18 @@ def menu(request):
     context = {
         "categorized_items": formatted_categorized_items,
     }
-
-
     return render(request, 'menu/menu.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def add_menu_item(request):
+    form = MenuItemForm()
+    if request.method == "POST":
+        form = MenuItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Mednu item added successfully")
+            return redirect('menu')
+    else:
+        form = MenuItemForm()
+    return render(request, 'menu/menu_form.html', {'form': form})
