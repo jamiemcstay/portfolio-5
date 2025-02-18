@@ -1,19 +1,32 @@
 {% load crispy_forms_tags %}
-<footer class="bg-dark text-white py-4 mt-5">
-    <div class="container">
+<footer class="bg-dark text-white py-4 mt-5 container-fluid">
         <div class="row">
             <div class="col-md-3 text-center text-md-left">
                 <a href="{% url 'home' %}">
                     <h1>Slurp</h1>
                 </a>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-3">
                 <h5>Subscribe to our newsletter</h5>
                 <form method="POST" action="{% url 'newsletter_signup' %}">
                     {% csrf_token %}
                     {% crispy newsletter_form %}
                 </form>
             </div>
+            <div class="col-md-3 text-center text-md-right">
+                <h5>Address</h5>
+                <p>123 Food Str,<br>Food City,<br>Co.Dublin<br>A94 NP29</p>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <h5>Quick Links</h5>
+                <ul class="d-flex flex-column">
+                    <li class="list-inline-item">Home</li>
+                    <li class="list-inline-item">Menu</li>
+                    <li class="list-inline-item">Bookings</li>
+                    <li class="list-inline-item">Contact Us</li>
+                </ul>
+            </div>
         </div>
-    </div>
+
 </footer>
