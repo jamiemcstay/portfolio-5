@@ -33,6 +33,7 @@
                 {% if user.is_superuser %}
                 <div class="d-flex justify-content-between">
                     <a href="{% url 'edit_menu_item' item.id %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'delete_menu_item' item.id %}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this item?');">Delete</a>
                 </div>
                 {% endif %}
 

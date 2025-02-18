@@ -63,3 +63,12 @@ def edit_menu_item(request, item_id):
     else:
         form = MenuItemForm(instance=menu_item)
     return render(request, 'menu/edit_menu_item.html', {'form': form, 'menu_item': menu_item})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def delete_menu_item(request, item_id):
+
+    menu_item = get_object_or_404(MenuItem, id=item_id)
+    menu_item.delete()
+    messages.success(request, "Menu item deleted")
+    return redirect('menu')
