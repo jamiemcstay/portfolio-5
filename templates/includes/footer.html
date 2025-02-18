@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+<footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 text-center text-md-left">
+                <a href="{% url 'home' %}">
+                    <h1>Slurp</h1>
+                </a>
+            </div>
+            <div class="col-md-6 text-center">
+                <h5>Subscribe to our newsletter</h5>
+                <form method="POST" action="{% url 'newsletter_signup' %}">
+                    {% csrf_token %}
+                    {% crispy newsletter_form %}
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
