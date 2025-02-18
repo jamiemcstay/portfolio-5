@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import dj_database_url
+if os.path.isfile('env.py'):
+    import env
 from pathlib import Path
-from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,12 +25,15 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ('t1jlp%f1!c$c&bhwgjrju8c$@y9s7x%fkop@^d32+yd%17g9p%')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'localhost:8000']
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'localhost',
+                 'localhost:8000',
+                 'slurp-ramen-a93fd0360d69.herokuapp.com']
 
 
 # Application definition
@@ -124,19 +128,18 @@ WSGI_APPLICATION = 'slurp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
-
-# DATABASES = {
-#      'default': dj_database_url.parse('postgresql://neondb_owner:2uVzAlxQn3WT@ep-shiny-brook-a2lmvbyf.eu-central-1.aws.neon.tech/chant_taste_thong_369270')
-#  }
-
-
-
+else: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
