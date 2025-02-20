@@ -54,7 +54,11 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
 
             for item_id, quantity in bag.items():
                 try:
@@ -80,7 +84,6 @@ def checkout(request):
         if not bag:
             messages.error(request, "You have not ordered any food yet")
             return redirect(reverse('menu'))
-        
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
