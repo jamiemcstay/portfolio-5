@@ -79,8 +79,42 @@ body.modal-open .overlay {
 }
 
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
     .main-logo-link {
         display: none;
     }
+
+    .navbar-expand-lg {
+        width: fit-content;
+    }
+
+    .header-icon-wrapper {
+        background-color: pink;
+        width: fit-content;
+        height: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .dropdown-menu  {
+        transform: translate3d(-15px, 40px, 0px);
+    }
+
+    /* .header-icon-wrapper a{
+        padding:0!important;
+    } */
+
+
+
+    /* .header-icon-wrapper p {
+        display: none;
+    } */
+
 }
+
+/* @media screen and (min-width: 992px) {
+    navbar-collapse  {
+        justify-content: center!important;
+    }
+} */
