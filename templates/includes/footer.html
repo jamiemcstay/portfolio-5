@@ -1,24 +1,27 @@
 {% load crispy_forms_tags %}
-<footer class="bg-dark text-white py-4 mt-5 container-fluid">
-        <div class="row">
-            <div class="col-md-3 text-center text-md-left">
+<footer class="bg-dark text-white py-4 container-fluid">
+        <div class="row d-flex justify-content-between">
+            <div class="col-md-6 col-lg-2 text-center text-md-left">
                 <a href="{% url 'home' %}">
                     <h1>Slurp</h1>
                 </a>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3 text-center text-md-left">
                 <h5>Subscribe to our newsletter</h5>
                 <form method="POST" action="{% url 'newsletter_signup' %}">
                     {% csrf_token %}
                     {% crispy newsletter_form %}
                 </form>
             </div>
-            <div class="col-md-3 text-center text-md-right">
-                <h5>Address</h5>
-                <p>123 Food Str,<br>Food City,<br>Co.Dublin<br>A94 NP29</p>
+            <div class="col-6 col-md-4 col-lg-2">
+
+                    <h5>Address</h5>
+                    <p >123 Food Str,<br>Food City,<br>Co.Dublin<br>A94 NP29</p>
+
+
             </div>
 
-            <div class="col-md-3 text-center">
+            <div class="col-6 col-md-4 col-lg-2">
                 <h5>Quick Links</h5>
                 <ul class="d-flex flex-column">
                     <li class="list-inline-item">Home</li>
@@ -26,6 +29,11 @@
                     <li class="list-inline-item">Bookings</li>
                     <li class="list-inline-item">Contact Us</li>
                 </ul>
+            </div>
+            <div class="col col-md-4 col-lg-2">
+                <h5>Opening Hours</h5>
+                <p>Monday - Saturday: 12:00 PM - 9:30 PM</p>
+                <p>Sunday: Closed</p>
             </div>
         </div>
 

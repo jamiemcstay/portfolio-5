@@ -78,6 +78,10 @@ body.modal-open .overlay {
 	color: #17a2b8; /* text-info */
 }
 
+footer ul {
+    padding-left: 0;
+}
+
 
 @media screen and (max-width: 991px) {
     .main-logo-link {
@@ -98,7 +102,7 @@ body.modal-open .overlay {
     }
 
     .dropdown-menu  {
-        transform: translate3d(-15px, 40px, 0px);
+        transform: translate3d(-15px, 40px, 0px)!important;
     }
 
     /* .header-icon-wrapper a{
