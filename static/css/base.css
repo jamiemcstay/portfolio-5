@@ -2,6 +2,13 @@ html {
     height: 100%
 }
 
+body {
+    background-color: #181818;
+    font-family: 'Noto Serif';
+    color: white;
+}
+
+
 .overlay {
     position: fixed;
     top: 0;
@@ -13,9 +20,17 @@ html {
     z-index: 1040;
 }
 
+.noto-sans {
+    font-family: 'Noto Sans';
+}
+
 main {
     padding-top: 60px!important;
     padding-bottom: 60px!important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Sans';
 }
 
 h2 {
@@ -28,6 +43,11 @@ h3 {
 
 a {
     text-decoration: none;
+    color: white;
+}
+
+.nano-text-light {
+    font-weight: 300;
 }
 
 .message-container {

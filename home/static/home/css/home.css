@@ -1,0 +1,8 @@
+main {
+    background-image: url('/media/images/ramen_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding-top: 100px;
+}

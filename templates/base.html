@@ -32,23 +32,29 @@
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     {% block extra_js %}
     {% endblock %}
 
     <title>Slurp{% block extra_title %}{% endblock %}</title>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 text-white">
 
     <header class="container-fluid">
         <div class="row d-flex justify-content-between align-items-center">
             <div class="col-lg-3 my-auto d-none d-lg-block py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h1 class="logo-font text-black my-0"><strong>Slurp</strong></h1>
+                    <h1 class="logo-font text-black my-0 text-uppercase"><strong>Slurp</strong><br><span class="nano-text-light">Ramen</span></h1>
                 </a>
             </div>
-            <nav class="col-lg-6 navbar navbar-expand-lg navbar-light bg-light">
-                <!-- Navbar brand -->
+            <nav class="col-lg-6 navbar navbar-expand-lg navbar-light">
 
 
                 <!-- Navbar Toggler (Hamburger Button) -->
@@ -59,18 +65,18 @@
 
                 <!-- Collapsible Nav Items -->
                 <div class="collapse navbar-collapse d-lg-flex justify-content-center" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav text-white">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link text-white noto-sans" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                            <a class="nav-link text-white noto-sans" href="{% url 'menu' %}">Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                            <a class="nav-link text-white noto-sans" href="{% url 'contact' %}">Contact Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'make_booking' %}">Bookings</a>
+                            <a class="nav-link text-white noto-sans" href="{% url 'make_booking' %}">Bookings</a>
                         </li>
                     </ul>
                 </div>
@@ -82,18 +88,18 @@
                             aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0 d-none d-lg-block">My Account</p>
+                                <p class="my-0 d-none d-lg-block noto-sans">My Account</p>
                             </div>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
                             {% endif %}
-                            <a href="{% url 'account' %}" class="dropdown-item">My Account</a>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            <a href="{% url 'account' %}" class="dropdown-item noto-sans">My Account</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item noto-sans">Logout</a>
                             {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item noto-sans">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item noto-sans">Login</a>
                             {% endif %}
                         </div>
                     </li>
@@ -144,7 +150,7 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="bg-dark text-white py-4 container-fluid pt-5 py-5 px-5">
+    <footer class="text-white py-4 container-fluid pt-5 py-5 px-5">
         <div class="row d-flex justify-content-between">
 
             <div class="col-md-6 col-lg-3 col-xl-2 text-center text-md-left">
