@@ -1,5 +1,5 @@
 main {
-    height: 100vh;
+    height: 80vh;
     position: relative;
     top: 0;
     left: 0;
@@ -9,6 +9,11 @@ main {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
 }
 
 
@@ -20,4 +25,23 @@ main .home-overlay {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 0;
+}
+
+main .content {
+    position: relative;
+    z-index: 10;
+}
+
+main .content h1 {
+    font-size: 5rem;
+}
+
+.home-page-button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    background-color: #B71C1C;
+    color: #1C1C1C;
+    border-color: transparent;
 }

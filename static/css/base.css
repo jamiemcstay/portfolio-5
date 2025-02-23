@@ -7,6 +7,22 @@ header {
     position: relative;
 }
 
+.slurp-text-red {
+    color: #B71C1C;
+}
+
+.slurp-text-green {
+    color: #A3B763;
+}
+
+.slurp-text-off-white {
+    color: #F8E8D9;
+}
+
+.slurp-text-black {
+    color: #1C1C1C;
+}
+
 
 .overlay {
     position: fixed;
