@@ -2,10 +2,9 @@ html {
     height: 100%
 }
 
-body {
-    background-color: #181818;
-    font-family: 'Noto Serif';
-    color: white;
+header {
+    z-index: 10;
+    position: relative;
 }
 
 
@@ -29,6 +28,10 @@ main {
     padding-bottom: 60px!important;
 }
 
+header a {
+ color: #1C1C1C;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Noto Sans';
 }
@@ -43,7 +46,6 @@ h3 {
 
 a {
     text-decoration: none;
-    color: white;
 }
 
 .nano-text-light {
@@ -144,21 +146,3 @@ body.modal-open .overlay {
     .dropdown-menu  {
         transform: translate3d(-15px, 40px, 0px)!important;
     }
-
-    /* .header-icon-wrapper a{
-        padding:0!important;
-    } */
-
-
-
-    /* .header-icon-wrapper p {
-        display: none;
-    } */
-
-}
-
-/* @media screen and (min-width: 992px) {
-    navbar-collapse  {
-        justify-content: center!important;
-    }
-} */
