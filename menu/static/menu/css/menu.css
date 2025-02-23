@@ -1,0 +1,12 @@
+.menu-card {
+    height: 100%!important;
+ }
+
+ .menu-row {
+    margin-bottom: 30px;
+ }
+
+ .menu-row:last-of-type {
+    margin-bottom: 0;
+ }
+
