@@ -3,11 +3,12 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Contact Us</h2>
+    <h1 class="h1-border mb-3">Contact Us</h1>
+    <h3 class="slurp-text-black noto-text-light noto-serif mb-5">Get in touch with us for additional information, we would love to hear from you</h3>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="submit" class="btn btn-primary contact-send-btn">Send Message</button>
     </form>
 </div>
 {%  endblock %}

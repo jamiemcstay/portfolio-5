@@ -3,12 +3,12 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Make a Booking</h2>
-
+    <h1 class="h1-border mb-3">Make a Booking</h1>
+    <h3 class="slurp-text-black noto-text-light noto-serif mb-5">Use the form to book in with us at Slurp Ramen, we cant wait to meet you</h3>
     <form method="POST">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit">Book Now</button>
+        <button type="submit" class="contact-send-btn">Book Now</button>
     </form>
 </div>
 {%  endblock %}

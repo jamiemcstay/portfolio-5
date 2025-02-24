@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="slurp-text-black mb-0 pb-2 h1-border mb-4">Menu</h1>
+            <h1 class="slurp-text-black pb-2 h1-border mb-4">Menu</h1>
             {% if user.is_superuser %}
             <a href="{% url 'add_menu_item' %}" class="btn btn-success mt-3">Add Item</a>
             {% endif %}

@@ -1,6 +1,6 @@
 .menu-card {
     height: 100%!important;
-    background-color: #faf2ea;
+    background-color: #ffffff;
  }
 
  .menu-row {
@@ -10,11 +10,7 @@
  .menu-row:last-of-type {
     margin-bottom: 0;
  }
-
- main {
-   background-color: #F8E8D9;
- }
-
+ 
  .modal-content {
    color: #1C1C1C;
  }

@@ -7,6 +7,10 @@ header {
     position: relative;
 }
 
+main {
+    background-color: #FAF9F6;
+}
+
 .slurp-text-red {
     color: #B71C1C;
 }
@@ -16,7 +20,7 @@ header {
 }
 
 .slurp-text-off-white {
-    color: #F8E8D9;
+    color: #FAF9F6;
 }
 
 .slurp-text-black {
@@ -43,6 +47,10 @@ header {
 
 .noto-sans {
     font-family: 'Noto Sans';
+}
+
+.noto-text-light {
+    font-weight: 300;
 }
 
 .h1-border {
@@ -80,8 +88,8 @@ a {
     text-decoration: none;
 }
 
-.noto-text-light {
-    font-weight: 300;
+form label {
+    display: none;
 }
 
 .message-container {
@@ -159,11 +167,18 @@ body.modal-open .overlay {
     border: 0;
  }
 
- .footer-sub-btn button, .bag-checkout-btn, .complete-order-btn {
+ .footer-sub-btn button, 
+ .bag-checkout-btn, 
+ .complete-order-btn, 
+ .contact-send-btn {
     background-color: #A3B763;
     border: 0;
     color: #1C1C1C;
     font-weight: 500;
+ }
+
+ .contact-send-btn {
+    padding: 1rem;
  }
 
 
@@ -192,6 +207,10 @@ footer {
     background-color: #000000;
 }
 
+.dropdown-menu  {
+    transform: translate3d(-15px, 40px, 0px)!important;
+}
+
 
 @media screen and (max-width: 991px) {
     .main-logo-link {
@@ -211,6 +230,4 @@ footer {
         top: 0;
     }
 
-    .dropdown-menu  {
-        transform: translate3d(-15px, 40px, 0px)!important;
-    }
+}
