@@ -88,9 +88,6 @@ a {
     text-decoration: none;
 }
 
-form label {
-    display: none;
-}
 
 .message-container {
     position: fixed;
