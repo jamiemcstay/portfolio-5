@@ -12,10 +12,7 @@ def menu(request):
     """
 
     menu_items = MenuItem.objects.all()
-    # category = Category.objects.all()
 
-
-    # Organizing items by category
     categorized_items = {
         "most_popular": menu_items.filter(category__name="most_popular"),
         "starters": menu_items.filter(category__name__iexact="starters"),
@@ -46,7 +43,7 @@ def add_menu_item(request):
             return redirect('menu')
     else:
         form = MenuItemForm()
-    return render(request, 'menu/menu_form.html', {'form': form})
+    return render(request, 'menu/add_menu_item.html', {'form': form})
 
 
 @user_passes_test(lambda u: u.is_superuser)
