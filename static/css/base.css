@@ -35,6 +35,12 @@ header {
     z-index: 1040;
 }
 
+/* Fonts*/
+
+.noto-serif {
+    font-family: 'Noto Serif';
+}
+
 .noto-sans {
     font-family: 'Noto Sans';
 }
@@ -42,6 +48,10 @@ header {
 main {
     padding-top: 60px!important;
     padding-bottom: 60px!important;
+}
+
+p {
+    font-family: 'Noto Serif';
 }
 
 header a {
@@ -64,7 +74,7 @@ a {
     text-decoration: none;
 }
 
-.nano-text-light {
+.noto-text-light {
     font-weight: 300;
 }
 
@@ -103,7 +113,6 @@ body.modal-open .overlay {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-	/* btn */
 	display: inline-block;
     font-weight: 400;
     color: #fff;
@@ -136,8 +145,44 @@ body.modal-open .overlay {
 
  /*Footer*/
 
+ .footer-logo img {
+    filter: invert(91%) sepia(17%) saturate(230%) hue-rotate(316deg) brightness(96%) contrast(88%);
+ }
+
+ .input-group-append {
+    border: 0;
+ }
+
+ .input-group-append button {
+    background-color: #B71C1C;
+    border: 0;
+ }
+
+
+
+ .logo-container {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hideen; 
+}
+
+.logo-container img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    filter: invert(91%) sepia(17%) saturate(230%) hue-rotate(316deg) brightness(96%) contrast(88%);
+}
+
+
 .footer-navlinks {
     padding-left: 0;
+}
+
+footer {
+    background-color: #000000;
 }
 
 
