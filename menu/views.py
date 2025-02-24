@@ -42,7 +42,7 @@ def add_menu_item(request):
         form = MenuItemForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Mednu item added successfully")
+            messages.success(request, "Menu item added successfully")
             return redirect('menu')
     else:
         form = MenuItemForm()

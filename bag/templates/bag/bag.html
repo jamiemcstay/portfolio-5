@@ -20,24 +20,22 @@
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
                         <tr>
-
                             <th scope="col">Item</th>
-                            <th scope="col"></th>
-                            <th scope="col">Price</th>
+                            <th scope="col" class="d-none d-md-table-cell">Price</th>
                             <th scope="col">Qty</th>
-                            <th scope="col">Subtotal</th>
+                            <th scope="col" class="d-none d-none d-md-table-cell">Subtotal</th>
                         </tr>
                     </thead>
 
                     {% for item in bag_items %}
                         <tr>
-                            <td class="p-3 w-25">
+                            <!-- <td class="p-3 w-25 d-none">
                                 <img class="img-fluid rounded" src="{{ item.menu_item.image.url }}">
-                            </td>
+                            </td> -->
                             <td class="py-3">
                                 <p class="my-0"><strong>{{ item.menu_item.name }}</strong></p>
                             </td>
-                            <td class="py-3">
+                            <td class="py-3 d-none d-md-table-cell">
                                 <p class="my-0">${{ item.menu_item.price }}</p>
                             </td>
                             <td class="py-3 w-25">
@@ -66,11 +64,12 @@
                                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                     </div>
                                 </form>
-                                <a class="update-link text-muted"><small>Update</small></a>
-                                <a class="remove-item text-muted" id="remove_{{ item.item_id }}">
-                                    <small>Remove</small>
-                                </a>
-                            <td class="py-3">
+                                <div class="update-remove-links d-flex justify-content-between">
+                                    <a class="update-link btn-primary text-white mr-3 mr-md-0 p-1"><small>Update</small></a>
+                                    <a class="remove-item danger btn-danger text-white p-1" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                                </div>
+
+                            <td class="py-3 d-none d-md-table-cell">
                                 <p class="my-0">${{ item.menu_item.price | calc_subtotal:item.quantity }}</p>
                             </td>
                         </tr>
@@ -79,19 +78,20 @@
                         <td colspan="5" class="pt-5 text-right">
                             <!-- <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6> -->
                             <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
-                            <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+                            <h4 class="mt-4"><strong>Total: ${{ grand_total|floatformat:2 }}</strong></h4>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="5" class="text-right">
+
                             <a href="{% url 'menu' %}" class="btn btn-outline-black rounded-0 btn-lg">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="text-uppercase">Back to menu</span>
                             </a>
-                            <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
-                                <span class="text-uppercase">Secure Checkout</span>
+                            <a href="{% url 'checkout' %}" class="bag-checkout-btn btn rounded-0 btn-lg">
+                                <span class="text-uppercase">Checkout</span>
                                 <span class="icon">
                                     <i class="fas fa-lock"></i>
                                 </span>

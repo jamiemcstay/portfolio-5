@@ -46,19 +46,4 @@ main .content h1 {
     border-color: transparent;
 }
 
-.logo-container {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hideen; 
-}
-
-.logo-container img {
-    width: 100%; 
-    height: auto;
-    display: block;
-    filter: invert(91%) sepia(17%) saturate(230%) hue-rotate(316deg) brightness(96%) contrast(88%);
-}
 

@@ -45,6 +45,12 @@ header {
     font-family: 'Noto Sans';
 }
 
+.h1-border {
+    border-bottom: solid black 3px;
+    width: fit-content;
+    font-weight: 500;
+}
+
 main {
     padding-top: 60px!important;
     padding-bottom: 60px!important;
@@ -153,11 +159,12 @@ body.modal-open .overlay {
     border: 0;
  }
 
- .input-group-append button {
-    background-color: #B71C1C;
+ .footer-sub-btn button, .bag-checkout-btn {
+    background-color: #A3B763;
     border: 0;
+    color: #1C1C1C;
+    font-weight: 500;
  }
-
 
 
  .logo-container {
