@@ -12,18 +12,17 @@
 <div class="container mb-2">
     <div class="row">
         <div class="col">
-            <h2 class="logo-font mb-4">Your Order</h2>
-            <hr>
+            <h1 class="logo-font mb-4 h1-border">Checkout</h1>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12 col-lg-6">
-            <p>Please fill out your information to complete your order</p>
+            <h2>Your Details</h2>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Your Details</legend>
+                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery Information</legend>
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field }}
                     {{ order_form.phone_number | as_crispy_field }}
@@ -52,7 +51,12 @@
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                     <!-- A Stripe card element will go here -->
                     <div class="mb-3" id="card-element"></div>
-
+                    <p class="small text-danger my-0">
+                        <span class="icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                    </p>
                     <!-- Used to display form errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     <!-- Pass the client secret to the view so we can get payment intent id -->
@@ -63,28 +67,69 @@
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
-                        <span class="font-weight-bold">Adjust Bag</span>
+                        <span class="font-weight-bold">Adjust Order</span>
                     </a>
-                    <button id="submit-button" class="btn btn-black rounded-0">
-                        <span class="font-weight-bold">Complete Order</span>
+                    <button id="submit-button" class="btn btn-black rounded-0 complete-order-btn">
+                        <span class="font-weight-bold">Order and Pay</span>
                         <span class="icon">
                             <i class="fas fa-lock"></i>
                         </span>
                     </button>
-                    <p class="small text-danger my-0">
-                        <span class="icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
-                    </p>
+
                 </div>
 
             </form>
         </div>
         <div class="col-12 col-lg-6 order-lg-last mb-5">
-            <p class="text-muted">Order Summary ({{ product_count }})</p>
-            <div class="row">
-                <div class="col-7 offset-2">
+            <h2>Your Order</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Price</th>
+                        <th scope="col" class="text-right">Subtotal</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    {% for item in bag_items %}
+                    <tr>
+                        <td>
+                            <strong>{{ item.menu_item.name }}</strong><br>
+                            <small class="text-muted">Qty: {{ item.quantity }}</small>
+                        </td>
+
+                        <td>
+                            ${{ item.menu_item.price | calc_subtotal:item.quantity }}
+                        </td>
+                        <td class="text-right">
+                            ${{ item.menu_item.price | calc_subtotal:item.quantity | floatformat:2 }}
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+
+            <hr>
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="text-left">Order Total:</td>
+                        <td class="text-right">${{ total | floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Delivery:</td>
+                        <td class="text-right">${{ delivery | floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><strong>Total:</strong></td>
+                        <td class="text-right"><strong>${{ grand_total | floatformat:2 }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+                <!-- <div class="col-7 offset-2">
                     <p class="mb-1 mt-0 small text-muted">Item</p>
                 </div>
                 <div class="col-3 text-right">
@@ -103,8 +148,8 @@
                     </div>
                 </div>
             {% endfor %}
-            <hr class="my-0">
-            <div class="row text-black text-right">
+            <hr class="my-0"> -->
+            <!-- <div class="row text-black text-right">
                 <div class="col-7 offset-2">
                     <p class="my-0">Order Total:</p>
                     <p class="my-0">Delivery:</p>
@@ -115,7 +160,7 @@
                     <p class="my-0">${{ delivery | floatformat:2 }}</p>
                     <p class="my-0"><strong>${{ grand_total | floatformat:2 }}</strong></p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

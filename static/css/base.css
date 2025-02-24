@@ -159,7 +159,7 @@ body.modal-open .overlay {
     border: 0;
  }
 
- .footer-sub-btn button, .bag-checkout-btn {
+ .footer-sub-btn button, .bag-checkout-btn, .complete-order-btn {
     background-color: #A3B763;
     border: 0;
     color: #1C1C1C;
