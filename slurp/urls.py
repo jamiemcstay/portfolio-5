@@ -17,6 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSitemap, MenuItemSitemap
+
+# Sitemaps
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'menu': MenuItemSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +38,9 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('bookings/', include('bookings.urls')),
     path('newsletter/', include('newsletter.urls')),
+
+    path('sitemap.xml', sitemap, {'sitemaps': {
+        'static': StaticViewSitemap,
+        'menu': MenuItemSitemap,
+    }}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
