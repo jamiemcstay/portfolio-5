@@ -10,7 +10,7 @@
     - [Design Choices](#design)
     - [Wireframes](#wireframes)
 
-2. [features](#features)
+2. [Features](#features)
 
 # UX
 
@@ -77,8 +77,29 @@ For this site I wanted I wanted to choose colors that use colors that create coh
 - #A3B763 - A muted green, creates a freshness and softens overall look.
 - #FAF9F6 - Off white offers a clean neatural backdrop to increase readability.
 
-
-
 ![Color Palette](media/images/screenshots/color-palette.png)
 
-  
+## Wireframes
+
+### Home Page
+
+![Home Page Wireframe](media/images/screenshots/home-wireframe.png)
+
+### Menu Page
+
+![Menu Page Wireframe](media/images/screenshots/menu-wireframe.png)
+
+### Menu Detail
+
+![Menu Detail Page Wireframe](media/images/screenshots/menu-detail-wireframe.png)
+
+### Booking Page
+
+![Booking Page Wireframe](media/images/screenshots/booking-wireframe.png)
+
+### Checkout 
+
+![Checkout Page Wireframe](media/images/screenshots/checkout-wireframe.png)
+
+# Features
+
