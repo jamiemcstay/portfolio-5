@@ -17,12 +17,14 @@
   * [**Future Features**](#future-features)
 
 * [**Testing**](#testing)
-  * [Bugs](#bugs)
-  * [Automated Testing](#automated-testing)
-  * [Manual Testing](#manual-testing)
-  * [Code Validation](#code-validation)
-    * [Jigsaw](#jigsaw)
-    * [Flake8 Python](#manual-testing)
+  * [**Bugs**](#bugs)
+  * [**Automated Testing**](#automated-testing)
+  * [**Manual Testing**](#manual-testing)
+  * [**Code Validation**](#code-validation)
+    * [**Jigsaw**](#jigsaw)
+    * [**Flake8 Python**](#python Testing)
+    * [**W3C HTML**](#w3c-html)
+    * [**Lighthouse**](#lighthouse)
 
 
 

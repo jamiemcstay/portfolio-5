@@ -6,8 +6,8 @@
 <head>
 
     {% block meta %}
-    <meta http-equiv="X-UA-Compatible" contents="ie=edge">
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" contents="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
 
@@ -32,9 +32,6 @@
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +50,7 @@
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <div class="d-flex align-items-center">
                         <div class="mr-2">
-                            <img src="{{ MEDIA_URL }}images/slurp-logo.svg" alt="Slurp Logo" class="logo-svg" alt="Slurp Logo" class="logo-svg">
+                            <img src="{{ MEDIA_URL }}images/slurp-logo.svg" alt="Slurp Logo" class="logo-svg" class="logo-svg">
                         </div>
                         <div class="header-logo">
                             <h2 class="logo-font dark-text my-0 text-uppercase"><strong>Slurp</strong><br><span class="noto-text-light">Ramen</span></h2>
@@ -65,26 +62,40 @@
             <nav class="col-lg-6 navbar navbar-expand-lg navbar-light">
 
 
-                <!-- Navbar Toggler (Hamburger Button) -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Collapsible Nav Items -->
                 <div class="collapse navbar-collapse d-lg-flex justify-content-center" id="navbarNavDropdown">
                     <ul class="navbar-nav text-white">
-                        <li class="nav-item active">
-                            <a class="nav-link noto-sans" href="#">Home <span class="sr-only">(current)</span></a>
+                        <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                            <a class="nav-link noto-sans" href="{% url 'home' %}">Home 
+                                {% if request.resolver_match.url_name == 'home' %}
+                                <span class="sr-only">(current)</span>
+                                {% endif %}
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link noto-sans" href="{% url 'menu' %}">Menu</a>
+                        <li class="nav-item {% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
+                            <a class="nav-link noto-sans" href="{% url 'menu' %}">Menu 
+                                {% if request.resolver_match.url_name == 'menu' %}
+                                <span class="sr-only">(current)</span>
+                                {% endif %}
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link noto-sans" href="{% url 'contact' %}">Contact Us</a>
+                        <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                            <a class="nav-link noto-sans" href="{% url 'contact' %}">Contact Us 
+                                {% if request.resolver_match.url_name == 'contact' %}
+                                <span class="sr-only">(current)</span>
+                                {% endif %}
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link noto-sans" href="{% url 'make_booking' %}">Bookings</a>
+                        <li class="nav-item {% if request.resolver_match.url_name == 'booking' %}active{% endif %}">
+                            <a class="nav-link noto-sans" href="{% url 'make_booking' %}">Bookings
+                                {% if request.resolver_match.url_name == 'make_booking' %}
+                                <span class="sr-only">(current)</span>
+                                {% endif %}
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -190,10 +201,10 @@
                 <div>
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled footer-navlinks noto-serif">
-                        <li class="noto-text-light"><a href="#" class="text-white noto-text-light">Home</a></li>
-                        <li class="noto-text-light"><a href="#" class="text-white">Menu</a></li>
-                        <li class="noto-text-light"><a href="#" class="text-white">Bookings</a></li>
-                        <li class="noto-text-light"><a href="#" class="text-white">Contact Us</a></li>
+                        <li class="noto-text-light"><a href="{% url 'home' %}" class="text-white noto-text-light">Home</a></li>
+                        <li class="noto-text-light"><a href="{% url 'menu' %}" class="text-white">Menu</a></li>
+                        <li class="noto-text-light"><a href="{% url 'make_booking' %}" class="text-white">Bookings</a></li>
+                        <li class="noto-text-light"><a href="{% url 'contact' %}" class="text-white">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -204,6 +215,7 @@
                 <p class="noto-text-light">Sunday: Closed</p>
             </div>
         </div>
+        <hr>
         <div class="row d-flex justify-content-between align-items-center">
             <div class="col-md-4">
                 <div class="d-flex align-items-center">
@@ -213,25 +225,30 @@
                     <div class="header-logo">
                         <h2 class="logo-font dark-text my-0 text-uppercase"><strong>Slurp</strong><br><span class="noto-text-light">Ramen</span></h2>
                     </div>
-                    
                 </div>
             </div>
             <div class="col-md-4">
                <ul class="d-flex mb-0 justify-content-center list-unstyled">
-                <li class="mr-3 noto-text-light"><a href="#" class="text-white">Terms</a></li>
-                <li class="mr-3 noto-text-light"><a href="#" class="text-white">Privacy</a></li>
-                <li class="noto-text-light"><a href="#" class="text-white">Cookies</a></li>
+                <li class="mr-3 noto-text-light"><a href="https://codeinstitute.net/ie/" target="blank" class="text-white">Terms</a></li>
+                <li class="mr-3 noto-text-light"><a href="https://codeinstitute.net/ie/" target="blank" class="text-white">Privacy</a></li>
+                <li class="noto-text-light"><a href="https://codeinstitute.net/ie/" target="blank" class="text-white">Cookies</a></li>
                </ul> 
             </div>
             <div class="col-md-4 d-flex justify-content-center justify-content-md-end">
                 <div class="footer-icons-wrapper mr-3">
-                    <i class="fa-brands fa-facebook-f"></i>
+                    <a class="text-white" href="https://www.facebook.com/profile.php?id=61573396959949" target="blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
                 </div>
                 <div class="footer-icons-wrapper mr-3">
-                    <i class="fa-brands fa-instagram"></i>
+                    <a class="text-white" href="https://www.instagram.com" target="blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
                 </div>
                 <div class="footer-icons-wrapper">
-                    <i class="fa-brands fa-twitter"></i>
+                    <a class="text-white" href="https://x.com/?lang=en" target="blank">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
                 </div>
             </div>
        </div>
