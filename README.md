@@ -2,23 +2,33 @@
 
 ## Table of Contents
 
-1. [UX](#ux)
-    - [Goals](#goals)
-        - [Project Goals](#project-goals)
-        - [Visitor Goals](#visitor-goals)
-    - [User Stories](#user-stories)
-    - [Design Choices](#design)
-    - [Wireframes](#wireframes)
+* [**Planning Phase**](#planning)
+  * [**Strategy**](#strategy)
+      * [**Site Aims**](#site-aims)
+      * [**Visitor Goals**](#visitor-goals)
+  * [**User Stories**](#user-stories)
+  * [**Design**](#design)
+  * [**Wireframes**](#wireframes)
+  * [**SEO Considerations**](#seo-considerations)
 
-2. [Features](#features)
-  - [Current Features](#current-features)
-  - [Features to Implement](#feat)
 
-# UX
+* [**Features**](#features)
+  * [**Apps**](#apps)
+  * [**Future Features**](#future-features)
 
-## Goals
+* [**Testing**](#testing)
+  * [bugs](#bugs)
 
-### Project Goals
+  
+* [**Deployment**](#deployment)
+  * [**Create a databse**](#create-a-database)
+
+
+# Planning
+
+## Strategy
+
+### Site Aims
 
 - Provide a user-friendly and effient online ordering system for customers to easily browse the menu, add food to a cart, and complete secure payments.
 - Enable customers to book a table for dining in, ensuring availability and a smooth reservation experience. 
@@ -105,35 +115,21 @@ For this site I wanted I wanted to choose colors that use colors that create coh
 
 # Features
 
-## Current Features
+## Apps
 
-### Apps
-
-#### Home
+### Home
 
 The home app is for rendering the main landing page of the website. The page serves as a first impression and a central navigation point to explore the rest of the site.
 
-#### Menu
+### Menu
 
 The menu app handles the display and management of menu items for the restaurant. The menu view retrieves all menu items from the database and categorizes them into sections such as Most Popular, Starters, Sides, Mains and Soft Drinks, ensuring a well organised presentation of the menu page.
 
 For administrative users, the app provides additional functionality to manage the menu. The add_menu_item view allows superusers to add new dishes through a form, while the edit_menu_item view enables modifications to existing items. The delete_menu_item view allows for the removal of menu items when necessary. These admin-onlyviews ensure that the menu remains up to date, offering an easy way to make changes via the Django admin panel.
 
-##### Menu App Database Schema
+#### Menu App Database Schema
 
-###### MenuItem Model
-
-| Field Name      | Data Type         | Description                                 |
-|-----------------|-------------------|---------------------------------------------|
-| `id`            | Integer           | Primary key, auto-incremented               |
-| `category`      | ManyToManyField   | Links to multiple `Category` objects        |
-| `name`          | CharField         | Name of the menu item (max length 254)      |
-| `description`   | TextField         | Detailed description of the menu item       |
-| `price`         | DecimalField      | Price of the menu item (max 6 digits, 2 decimal places) |
-| `image`         | ImageField        | Image representing the menu item (nullable) |
-| `image_url`     | URLField          | URL of the image representing the menu item (nullable) |
-
-###### Category Model
+##### MenuItem Model
 
 | Field Name      | Data Type         | Description                                 |
 |-----------------|-------------------|---------------------------------------------|
@@ -145,18 +141,30 @@ For administrative users, the app provides additional functionality to manage th
 | `image`         | ImageField        | Image representing the menu item (nullable) |
 | `image_url`     | URLField          | URL of the image representing the menu item (nullable) |
 
-#### Bag
+##### Category Model
+
+| Field Name      | Data Type         | Description                                 |
+|-----------------|-------------------|---------------------------------------------|
+| `id`            | Integer           | Primary key, auto-incremented               |
+| `category`      | ManyToManyField   | Links to multiple `Category` objects        |
+| `name`          | CharField         | Name of the menu item (max length 254)      |
+| `description`   | TextField         | Detailed description of the menu item       |
+| `price`         | DecimalField      | Price of the menu item (max 6 digits, 2 decimal places) |
+| `image`         | ImageField        | Image representing the menu item (nullable) |
+| `image_url`     | URLField          | URL of the image representing the menu item (nullable) |
+
+### Bag
 
 The bag app manages the users shopping cart by allowing items to added, updated, or removed. It uses Django sessions to store cart data, ensuring that selections persist across page reloads. The app includes views for viewing the cart, adding items with specified quantities, adjusting item quantities, and removing items. Additionally, it calculates, the total cost, item count, and delivery charges, making this information available via the bag. The data is passed as context, making it accessible throughout the site, ensuriung a consistent and dynamic user experience for the cart and checkout process.
 
 
-#### Checkout
+### Checkout
 
 The checkout app handles the stripe payment processing and order creation once a user proceeds with their purchase. It integrates with Stripe's webhook system to manage payment statuses and store orders in the database. The app listens for incoming Stripe webhooks, processes events like payment_itent.succeeded and payment_intent.payment failed, and then takes actions accordingly, such as creating an order, saving customer information, and sending confirmation emails. It ensures that orders are properly recorded and that customers recieve order confirmations after a successful payment.
 
-##### Checkout App Database Schema
+#### Checkout App Database Schema
 
-###### Order Model
+##### Order Model
 
 | Field Name        | Data Type                       | Description                                                                   |
 |-------------------|---------------------------------|-------------------------------------------------------------------------------|
@@ -178,7 +186,7 @@ The checkout app handles the stripe payment processing and order creation once a
 | `original_bag`    | `TextField`                     | Original cart data in text format (used for order reconstruction).            |
 | `stripe_pid`      | `CharField` (max_length=254)    | Stripe payment intent ID for the order.                                       |                        |
 
-###### OrderLineItem Model
+##### OrderLineItem Model
 
 | Field Name        | Data Type                       | Description                                                                   |
 |-------------------|---------------------------------|-------------------------------------------------------------------------------|
@@ -188,13 +196,13 @@ The checkout app handles the stripe payment processing and order creation once a
 | `lineitem_total`  | `DecimalField` (max_digits=6, decimal_places=2) | Total cost of the line item (calculated as `menu_item.price * quantity`). |
 
 
-#### Bookings
+### Bookings
 
 The bookings app allows customers to make reservations for dining at the restaurant. It uses a form to collect customer details, including name, email,number of people, reservation date, and special requests. When the form is submitted, the app validates the data and creates a booking entry. Upon successful booking, a confirmation email is sent to the customer with the reservation details. The app also displays success message to inform the user that their booking has been confirmed.
 
-##### Bookings App Database Schema
+#### Bookings App Database Schema
 
-###### Booking Model
+##### Booking Model
 
 | Field Name         | Data Type                       | Description                                                                   |
 |--------------------|---------------------------------|-------------------------------------------------------------------------------|
@@ -208,13 +216,13 @@ The bookings app allows customers to make reservations for dining at the restaur
 | `created_at`       | `DateTimeField`                 | The date and time the booking was created.                                    |
 
 
-#### Contact
+### Contact
 
 The contact app enables users to send inquires or feedback to the restaurant through a contact form. The form collects the users name, email, and message. When the form is submitted, the app validates the data, sends the message via email to a specified email address, and stores the data in the database for future reference. Upon successful submission, a success message is displayed to the user, informing them that their message has been sent.
 
-##### Contact App Database Schema
+#### Contact App Database Schema
 
-###### ContactMessage Model
+##### ContactMessage Model
 
 | Field Name  | Data Type            | Description                                                   |
 |-------------|----------------------|---------------------------------------------------------------|
@@ -224,11 +232,11 @@ The contact app enables users to send inquires or feedback to the restaurant thr
 | `created_at`| `DateTimeField`      | The date and time the message was created.                    |
 
 
-#### Newsletter
+### Newsletter
 
 The newsletter app allows users to subscribe to the restaurants newsletter by entering their email address. When a user submits their email, the app validates the email format, and if valid, saves the email address to the database for future newsletters. After successful submission, the user recieves a confirmation message indicating they have been subscibed. If the email is invalid, and error message will be displayed prompting the user to try again.
 
-##### Newsletter App Database Schema
+#### Newsletter App Database Schema
 
 | Field Name    | Data Type             | Description                                                   |
 |---------------|-----------------------|---------------------------------------------------------------|
@@ -236,7 +244,7 @@ The newsletter app allows users to subscribe to the restaurants newsletter by en
 | `date_subscribed` | `DateTimeField`  | The date and time when the user subscribed to the newsletter. |
 
 
-#### Account
+### Account
 
 The account app manages user accounts and order histories. It allows users to view and update their account details, such as contact information, through a form. When the form is submitted and validated, the user recieves a success message confirming the update. The app also displays the users past orders by fetching and showing associated orders.
 
@@ -253,6 +261,44 @@ Additionally, users can view and detailed information about individual orders, i
 | `default_country`        | `CountryField`         | The user's default country, stored as a country code.                                         |
 | `default_postcode`       | `CharField(max_length=20)` | The user's default postcode (optional).                                                      |
 
+## Future Features
+
+### Loyalty Program
+
+- Implement rewards program where customers can earn points for every purchase and redeem them for discounts or free items.
+
+### Order Customization
+
+- Allow customers to customize their food orders (eg. adding extra toppings, changing seasonings, etc) directly from the menu.
+
+### Real-Time Order Tracking
+
+- Provide customers with real time updates on their order status, from preperation to delivery, with push notifications for live tracking.
+
+### Customer Reviews and Ratings
+
+- Add functionality for customers to leave reviews and ratings for menu items and their overall experience.
+
+### Gift Cards
+
+- Implement a feature for customers to purchase and redeem digital gift cards for use in the restaurant.
+
+# Testing
+
+## Bugs
+
+Issue: After deployment the send mail function was yielding a 500 server error.
+
+Cause: Incompatability with send mail and python 3.12.
+
+Solution: Downgrade to Pyton 3.11
+
+Status: Fixed
+_______
+
+Issue: 
+
+### 
 
 
 
