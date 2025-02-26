@@ -17,7 +17,14 @@
   * [**Future Features**](#future-features)
 
 * [**Testing**](#testing)
-  * [bugs](#bugs)
+  * [Bugs](#bugs)
+  * [Automated Testing](#automated-testing)
+  * [Manual Testing](#manual-testing)
+  * [Code Validation](#code-validation)
+    * [Jigsaw](#jigsaw)
+    * [Flake8 Python](#manual-testing)
+
+
 
   
 * [**Deployment**](#deployment)
@@ -296,9 +303,29 @@ Solution: Downgrade to Pyton 3.11
 Status: Fixed
 _______
 
-Issue: 
+Issue: Unable to install allauth.
 
-### 
+Cause: Incompatability of version of setuptools installed.
+
+Solution: Upgrade setuptools to version 67.0.0
+
+Status: Fixed
+
+___
+
+Issue: Webhooks creates the order in the database everytime a payment is processed.
+
+Cause: Potentially cause by the matching criteria used in the webhook that checks if the order has been created being too specif, and leading to the webhook never registering the oder has been created.
+
+Solution: Even though this was happening, it isnt creating duplicate orders and the payment flow was still working, which lead me to beleive the best option was to leave it as its not a major issue.
+
+Status: Unfixed
+
+## Manual Testing
+
+
+
+
 
 
 
