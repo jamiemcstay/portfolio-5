@@ -8,11 +8,11 @@ class Booking(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15)
-    number_of_people = models.IntegerField()
-    reservation_date = models.DateTimeField(
+    number_of_people = models.IntegerField(
         default=1,
         validators=[MinValueValidator(1), MaxValueValidator(30)]
     )
+    reservation_date = models.DateTimeField()
     special_requests = models.TextField(blank=True, null=True)
     status = models.CharField(
         max_length=20,
