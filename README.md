@@ -26,8 +26,6 @@
     * [**W3C HTML**](#w3c-html)
     * [**Lighthouse**](#lighthouse)
 
-
-
   
 * [**Deployment**](#deployment)
   * [**Create a databse**](#create-a-database)
