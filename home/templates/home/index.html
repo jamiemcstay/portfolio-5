@@ -15,5 +15,30 @@
         <strong>Slurp</strong><br><span class="nano-text-light">Ramen</span></h1>
     <a href="{% url 'menu'}" class="home-page-button btn btn-primary slurp-text-off-white mx-auto">Order Now</a>
 </div>
+
+{% block styles %}
+
+<style>
+    main {
+    height: 80vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('{{ MEDIA_URL }}images/ramen_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+}
+</style>
+
+
+{% endblock %}
  
 {% endblock %}
