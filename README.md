@@ -323,12 +323,35 @@ Status: Unfixed
 
 ## Manual Testing
 
+### User Story Testing
+
+#### Visitor Stories Testing
+
+| **Test**                                      | **Description**                                                     | **Expected Result**                                                        | **Result**                               |
+|-----------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------------|
+| View detailed menu                            | Test if users can view a detailed menu.                             | Menu should display all items with details like name, description, price.  | Pass                                     |
+| Add items to shopping cart                            | Test if users can add items to the shopping cart                             | Items are added to the cart with the correct, name, price, and quantity  | Pass                                     |
+| Review order                                  | Test if users can review their order before proceeding.             | Users should see the cart with the total price and itemized order.        | Pass                                     |
+| Secure payment process                        | Test if users can securely pay for their order online.              | Payment should be processed securely with encrypted information.          | Pass
+| Payment confirmation                          | Test if users receive a confirmation after a successful payment.     | A confirmation page with order details appears after the payment is made. | Pass                                     |
+| Email confirmation                            | Test if users receive an email confirmation for their order.        | User receives an email with order details after successful payment.       | Pass                                     |
+| User-friendly interface                       | Test if the website interface is easy to navigate for users.        | Website layout and design should be intuitive and easy to navigate.       | Pass                                     |
+| Sign up for newsletter                        | Test if users can sign up for the newsletter.                        | A sign-up form should accept valid emails and display a confirmation.     | Pass                                     |
+| Account creation                              | Test if users can create an account.                                | User should be able to register an account with valid information.        | Pass                                     |
+| User login                                     | Test if users can log in to their account.                          | Users can log in using their registered credentials.                       | Pass                                     |
+| User logout                                    | Test if users can log out of their account.                         | Users can log out, and their session is secured.                           | Pass                                     |
 
 
+#### Admin Stories Testing
 
+| **Test**                                      | **Description**                                                     | **Expected Result**                                                        | **Result**                               |
+| Add, edit, and remove menu items              | Test if the admin can add, edit, or remove menu items.              | Admin can successfully perform these actions through the admin panel.     | Pass                                     |
+| Restrict access to management functions       | Test if admin functions are restricted to authorized users.        | Unauthorized users should not have access to admin management functions. | Pass                                     |
 
+#### Developer Stories Testing
 
-
-
-
+| **Test**                                      | **Description**                                                     | **Expected Result**                                                        | **Result**                               |
+|-----------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------------|
+| Defensive programming                         | Test if the site handles errors and invalid inputs properly.        | Site should not break and should handle invalid inputs gracefully.        | Pass                                     |
+| User credentials and data access              | Test if users with correct credentials can access their data.      | Only users with valid credentials should be able to view their own data.  | Pass  
 
