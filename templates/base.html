@@ -1,13 +1,13 @@
-{% load static %}
-
 <!doctype html>
+
+{% load static %}
 <html lang="en">
 
 <head>
 
     {% block meta %}
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" contents="ie=edge">
+    <meta http-equiv="X-UA-Compatible" contents="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
 
@@ -20,26 +20,26 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
+
+
     {% block extra_css %}
     {% endblock %}
 
-    {% block corejs %}
-    <script src="https://kit.fontawesome.com/1292c16ab0.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
-    <script src="https://js.stripe.com/v3/"></script>
-    {% endblock %}
+
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    {% block jquery %}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    {% endblock %}
+    
     {% block extra_js %}
     {% endblock %}
 
-    <title>Slurp{% block extra_title %}{% endblock %}</title>
+    <title>Slurp Ramen</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -50,7 +50,7 @@
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <div class="d-flex align-items-center">
                         <div class="mr-2">
-                            <img src="{% static 'images/slurp-logo.svg' %}" alt="Slurp Logo" class="logo-svg" class="logo-svg">
+                            <img src="{% static 'images/slurp-logo.svg' %}" alt="Slurp Logo" class="logo-svg">
                         </div>
                         <div class="header-logo">
                             <h2 class="logo-font dark-text my-0 text-uppercase"><strong>Slurp</strong><br><span class="noto-text-light">Ramen</span></h2>
@@ -179,7 +179,7 @@
                     <div class="input-group">
                         <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                         <div class="input-group-append footer-sub-btn">
-                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                            <button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter">Subscribe</button>
                         </div>
                     </div>
                 </form>
@@ -220,7 +220,7 @@
             <div class="col-md-4">
                 <div class="d-flex align-items-center">
                     <div class="mr-2 footer-logo">
-                        <img src="{% static 'images/slurp-logo.svg' %}" alt="Slurp Logo" class="logo-svg" alt="Slurp Logo" class="logo-svg">
+                        <img src="{% static 'images/slurp-logo.svg' %}" alt="Slurp Logo" class="logo-svg">
                     </div>
                     <div class="header-logo">
                         <h2 class="logo-font dark-text my-0 text-uppercase"><strong>Slurp</strong><br><span class="noto-text-light">Ramen</span></h2>
@@ -259,6 +259,14 @@
     <script type="text/javascript">
         $('.toast').toast('show');
     </script>
+    {% endblock %}
+
+    {% block corejs %}
+    <script src="https://kit.fontawesome.com/1292c16ab0.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
 </body>

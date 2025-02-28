@@ -33,8 +33,12 @@ class BookingForm(forms.ModelForm):
                                                            'type':
                                                            'datetime-local',
                                                            'placeholder':
-                                                           'Select date and time'}),
-            'special_requests': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Special Requests (optional)'}),
+                                                           'Select date and \
+                                                           time'}),
+            'special_requests': forms.Textarea(
+                attrs={'class': 'form-control',
+                                'rows': 4, 'placeholder':
+                                'Special Requests (optional)'}),
         }
 
     def clean_number_of_people(self):
@@ -42,7 +46,8 @@ class BookingForm(forms.ModelForm):
         number_of_people = self.cleaned_data.get('number_of_people', 1)
 
         if number_of_people < 1:
-            raise ValidationError("You must have at least 1 person for the booking")
+            raise ValidationError(
+                "You must have at least 1 person for the booking")
         if number_of_people > 30:
             raise ValidationError("We cannot accomodate more than 30 people.")
 
@@ -59,7 +64,8 @@ class BookingForm(forms.ModelForm):
         if isinstance(reservation_date, str):
             reservation_date = parse_datetime(reservation_date)
             if reservation_date is None:
-                raise ValidationError("Invalid date format. Please use correct format.")
+                raise ValidationError(
+                    "Invalid date format. Please use correct format.")
 
         print(f"reservation_date: {reservation_date}")
         print(timezone.now())
@@ -67,9 +73,14 @@ class BookingForm(forms.ModelForm):
         if reservation_date < localtime(timezone.now()):
             raise ValidationError("Please pick a date starting from today.")
 
-        total_people_at_time = sum(booking.number_of_people for booking in Booking.objects.filter(reservation_date=reservation_date))
+        total_people_at_time = sum(
+            booking.number_of_people
+            for booking in Booking.objects.filter(
+                reservation_date=reservation_date))
 
         if total_people_at_time + number_of_people > 30:
-            raise ValidationError("Sorry, we cannot accomodate that number of people at this time.")
+            raise ValidationError(
+                "Sorry, we cannot accomodate that number \
+                of people at this time.")
 
         return reservation_date

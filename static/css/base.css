@@ -185,7 +185,7 @@ body.modal-open .overlay {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hideen; 
+    overflow: hidden; 
 }
 
 .logo-container img {
@@ -219,7 +219,6 @@ footer {
     }
 
     .header-icon-wrapper {
-        background-color: pink;
         width: fit-content;
         height: auto;
         position: absolute;
