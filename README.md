@@ -1,16 +1,19 @@
 # SLurp Ramen
 
+![Am I Responsive Screenshot](static/images/screenshots/am-i-responsive.png)
+
 ## Table of Contents
 
 * [**Planning Phase**](#planning)
   * [**Strategy**](#strategy)
       * [**Site Aims**](#site-aims)
       * [**Visitor Goals**](#visitor-goals)
-  * [**User Stories**](#user-stories)
+  * [**Agile Methodologies**]
+    * [**User Stories**](#user-stories)
   * [**Design**](#design)
+  * [**Ecommerce Business Model**]
   * [**Wireframes**](#wireframes)
   * [**SEO Considerations**](#seo-considerations)
-
 
 * [**Features**](#features)
   * [**Apps**](#apps)
@@ -26,7 +29,6 @@
     * [**W3C HTML**](#w3c-html)
     * [**Lighthouse**](#lighthouse)
 
-  
 * [**Deployment**](#deployment)
   * [**Create a databse**](#create-a-database)
 
@@ -54,7 +56,16 @@
 - To sign up for a newsletter to keep up to date with any changes relevant to the restaurant.
 - To have feedback on the website when an action has been successul or unsuccessful.
 
-## User Stories
+## Agile Methodology
+
+In this project, I adopted a streamlined agile approach using GitHubs issue tracking and project board features. Each task was defined as an issue, with clear acceptance criteria that outlined the expected outcomes for successful complettion. These criteris served as a guide to ensure each feature or fix met the requirements before being moved to the next stage.
+
+The tasks were through various stages on the board, From "To Do" to "In Progress" and ultimately to "Completed" once the acceptance criteria were met.
+This ensured a transparent, efficient worflow, with task being cheked and validated against the criteria before being marked as finished.
+
+![Checkout Page Wireframe](static/images/screenshots/agile-method.png)
+
+### User Stories
 
 ### User
 
@@ -96,29 +107,34 @@ For this site I wanted I wanted to choose colors that use colors that create coh
 - #A3B763 - A muted green, creates a freshness and softens overall look.
 - #FAF9F6 - Off white offers a clean neatural backdrop to increase readability.
 
-![Color Palette](media/images/screenshots/color-palette.png)
+![Color Palette](static/images/screenshots/color-palette.png)
 
 ## Wireframes
 
 ### Home Page
 
-![Home Page Wireframe](media/images/screenshots/home-wireframe.png)
+![Home Page Wireframe](static/images/screenshots/home-wireframe.png)
 
 ### Menu Page
 
-![Menu Page Wireframe](media/images/screenshots/menu-wireframe.png)
+![Menu Page Wireframe](static/images/screenshots/menu-wireframe.png)
 
 ### Menu Detail
 
-![Menu Detail Page Wireframe](media/images/screenshots/menu-detail-wireframe.png)
+![Menu Detail Page Wireframe](static/images/screenshots/menu-detail-wireframe.png)
 
 ### Booking Page
 
-![Booking Page Wireframe](media/images/screenshots/booking-wireframe.png)
+![Booking Page Wireframe](static/images/screenshots/booking-wireframe.png)
 
 ### Checkout 
 
-![Checkout Page Wireframe](media/images/screenshots/checkout-wireframe.png)
+![Checkout Page Wireframe](static/images/screenshots/checkout-wireframe.png)
+
+## E-Commerce Business Model
+
+Implementing an e-commerce platform for the restaurant provides a seamless, efficent way for customers to browse the menu, place orders for delivery, or reserve tables for dining in. By offering an online ordering system, the restaurant expands its reach, allowing customers to conveniently place orders anytime, without the need for direct interaction or phone calls. This not only increases sales potential but also provides valuable customer data that can be used for targeted marketing through our newsletter, and improving customer experience.
+Additionally, integrating secure payment processing and booking systems enhances customer trust and satisfaction, making the restaurant more accessible and competitive in the digital age. The ecommerce website not only drives revenue but also establishes the restaurants presence in the local online market, attracting new customers while retaining loyal ones.
 
 ## Seo Considerations
 
