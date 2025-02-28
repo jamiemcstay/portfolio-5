@@ -4,7 +4,6 @@ from django.contrib import messages
 from .models import MenuItem, Category
 from .forms import MenuItemForm
 
-# Create your views here.
 
 def menu(request):
 
@@ -59,7 +58,9 @@ def edit_menu_item(request, item_id):
             return redirect('menu')
     else:
         form = MenuItemForm(instance=menu_item)
-    return render(request, 'menu/edit_menu_item.html', {'form': form, 'menu_item': menu_item})
+    return render(
+        request,
+        'menu/edit_menu_item.html', {'form': form, 'menu_item': menu_item})
 
 
 @user_passes_test(lambda u: u.is_superuser)

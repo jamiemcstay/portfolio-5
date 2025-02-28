@@ -5,7 +5,6 @@ from .forms import ContactForm
 from .models import ContactMessage
 
 
-# Create your views here.
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -22,7 +21,8 @@ def contact(request):
                 fail_silently=False,
             )
 
-            ContactMessage.objects.create(name=name, email=email, message=message)
+            ContactMessage.objects.create(name=name, email=email,
+                                          message=message)
 
             messages.success(request, 'Your message has been sent')
             return redirect('contact')

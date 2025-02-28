@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import MenuItem, Category
 
-# Register your models here.
 
 class MenuItemAdmin(admin.ModelAdmin):
     list_display = (
@@ -18,6 +17,6 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
     )
 
+
 admin.site.register(MenuItem, MenuItemAdmin)
 admin.site.register(Category, CategoryAdmin)
-

@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -13,7 +14,6 @@ from bag.contexts import bag_contents
 import stripe
 import json
 
-# Create your views here.
 
 @require_POST
 def cache_checkout_data(request):
@@ -70,15 +70,18 @@ def checkout(request):
                     )
                 except MenuItem.DoesNotExist:
                     messages.error(request, (
-                        "There is an issue with one of the items in your order, please contact us for more information")
+                        "There is an issue with one of the items in your \
+                        order, please contact us for more information")
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
-            
+
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                        'checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with you form. Please check your information')
+            messages.error(request, 'There was an error with you form. \
+            Please check your information')
     else:
         bag = request.session.get('bag', {})
         if not bag:
@@ -113,7 +116,9 @@ def checkout(request):
             order_form = OrderForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. Did you forget to set in your environment?')
+        messages.warning(
+            request, 'Stripe public key is missing. \
+            Did you forget to set in your environment?')
 
     template = 'checkout/checkout.html'
     context = {
@@ -125,7 +130,7 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
-     
+
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -148,7 +153,8 @@ def checkout_success(request, order_number):
             if user_account_form.is_valid():
                 user_account_form.save()
 
-    messages.success(request, f'Order successful. Your order number is {order_number}. Confirmation email will be sent to {order.email}.')
+    messages.success(request, f'Order successful. Your order number is \
+    {order_number}. Confirmation email will be sent to {order.email}.')
 
     if 'bag' in request.session:
         del request.session['bag']
