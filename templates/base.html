@@ -6,9 +6,13 @@
 <head>
 
     {% block meta %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" contents="IE=edge">
+    <meta charset="UTF-8">
+    <meta content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Enjoy the best ramen in Dublin with authentic Japanese flavors. Dine in or order ramen delivery.">
+    <meta name="keywords" content="Ramen Dublin, Best ramen Dublin, Top ramen restaurants Dublin, Authentic ramen Dublin, Japanese ramen Dublin, 
+    Dublin ramen spots, Ramen near me, Ramen delivery Dublin, Ramen takeout Dublin, Ramen reviews Dublin, Ramen menu Dublin, Ramen deals Dublin, 
+    Ramen specials Dublin">
     {% endblock %}
 
     {% block extra_meta %}
@@ -25,7 +29,14 @@
     {% block extra_css %}
     {% endblock %}
 
-
+    {% block corejs %}
+    <script src="https://kit.fontawesome.com/1292c16ab0.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
+    <script defer src="https://js.stripe.com/v3/"></script>
+    {% endblock %}
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +44,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     {% block jquery %}
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
     {% endblock %}
     
     {% block extra_js %}
@@ -236,17 +247,17 @@
             </div>
             <div class="col-md-4 d-flex justify-content-center justify-content-md-end">
                 <div class="footer-icons-wrapper mr-3">
-                    <a class="text-white" href="https://www.facebook.com/profile.php?id=61573396959949" target="blank" rel="noopener">
+                    <a class="text-white" href="https://www.facebook.com/profile.php?id=61573396959949" target="blank" rel="noopener" aria-label="Visit our Facebook page">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
                 </div>
                 <div class="footer-icons-wrapper mr-3">
-                    <a class="text-white" href="https://www.instagram.com" target="blank" rel="noopener">
+                    <a class="text-white" href="https://www.instagram.com" target="blank" rel="noopener" aria-label="Visit our Instagram page">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
                 <div class="footer-icons-wrapper">
-                    <a class="text-white" href="https://x.com/?lang=en" target="blank" rel="noopener">
+                    <a class="text-white" href="https://x.com/?lang=en" target="blank" rel="noopener" aria-label="Visit our Twitter page">
                         <i class="fa-brands fa-twitter"></i>
                     </a>
                 </div>
@@ -261,13 +272,6 @@
     </script>
     {% endblock %}
 
-    {% block corejs %}
-    <script src="https://kit.fontawesome.com/1292c16ab0.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
-    <script src="https://js.stripe.com/v3/"></script>
-    {% endblock %}
 
 </body>
 

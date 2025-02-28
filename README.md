@@ -120,6 +120,10 @@ For this site I wanted I wanted to choose colors that use colors that create coh
 
 ![Checkout Page Wireframe](media/images/screenshots/checkout-wireframe.png)
 
+## Seo Considerations
+
+To optimize my website for search engines, I strategically incorporated relevant keywords into the sites metadata and image attributes. In the head section of my HTML, I included a <meta name="keywords"> tag populated with the key phrases related to ramen in Dublin, such as "best ramen Dublin", "authentic Japanese Ramen", and "ramen Delivery Dublin". Additionally, I enhanced image accessibility and SEO  by descriptive alt attributes to <img> tags, ensuring that search engines can better understand the contact of my images. These alt texts include keywords such as "best ramen in Dublin", and "Ramen Delivery Dublin", which helps improve visibility in image searches while maintaining usability for visually impaired users. 
+
 # Features
 
 ## Apps
