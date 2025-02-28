@@ -420,6 +420,123 @@ w3 schools was used to validate html code, some errors were reported but were du
 
 The best practices score was low on all pages, due to issues with stripe which is unavoidbale, also on pages, where media was being sourced from AWS, that brought the performance down.
 
+# Deployment
+
+### Database set up
+
+1. Navigate to PostreSQL from Code Institute
+
+2. Enter email address
+
+3. Click Submit, link will be sent to email address.
+
+### Create Heroku App
+
+1. Click New to create a new app. 
+
+2. Gave app a name and selected EU region.
+
+3. Click Create app. 
+
+4. Navigate to settings tab.
+
+5. Add the config var DATABASE_URL and add the database url from the PostgreSQL codeinstitute email.
+
+### Conntect to local development server
+
+1. In vscode terminal, install dj_database_url and psycopg2 using command:
+
+`pip3 install dj_database_url==0.5.0 psycopg2`
+
+2. Update requirements.txt file with new packages:
+
+`pip freeze > requirements.txt`
+
+3. In settings.py file, import dj_database_url underneath import for os.
+
+4. In the database section of settings.py so that original connection to sqlite3 is commented out and can connect to new database instead. Paste database URL from postgreSQL in to position indicated:
+
+ 
+`DATABASES = {
+    'default': dj_database_url.parse('your-database-url-here')
+}`
+
+5.In the terminal, run the showmigrations command to confirm connection to database. 
+
+`python3 manage.py showmigrations`
+
+6. Migrate database models to new database.
+
+`python3 manage.py migrate`
+
+7. Load in fixtures from menu and categories models, ensuring to load categories first.
+
+`python3 manage.py loaddata categories`
+
+8. Then, load in menu fixtures.
+
+`python3 manage.py loaddata menu`
+
+9. Create new superuser for database.
+
+`python3 manage.py createsuperuser`
+
+10. Delete code added for new database_url to prevent being exposed to github.
+
+```python
+DATABASES = {
+    'default': dj_database_url.parse('your-database-url-here')
+}
+```
+
+### Deploy to Heroku
+
+1. Locate DATABASES settings in settings.py.
+
+2. Update the code to ensure that development environment can continue to access local SQLite database, and deployed site can simultaneously access newly created database.
+
+```python
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+```
+
+3. Locate where env module is imported in settings.
+
+4. Update code to check if file exists in the in environment before trying to import it, to avoid errors when Heroku tries to access the file.
+
+5. Create Procfile in root directory of project.
+
+6. Tell Heroku to create web dyno and run gunicorn to serve django app by adding this line to Procfile:
+
+`web: gunicorn slurp-ramen.wsgi:application`
+
+7. Ensure Heroku uses correct version of Python by adding a runtime.txt file to root directory, and inside it add:
+
+`python-3.11.11`
+
+8. Return to Heroku dashboard and click Open app, copy the url in your browser window.
+
+9. Go back to settings.py, add the copied URL the the ALLOWED_HOSTS, ensuring to remove https:// from url start.
+
+10. 
+
+
+
+
+
+    
+
+
+
 
 
 
