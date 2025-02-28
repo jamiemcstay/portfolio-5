@@ -50,7 +50,7 @@
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <div class="d-flex align-items-center">
                         <div class="mr-2">
-                            <img src="{{ MEDIA_URL }}slurp-logo.svg" alt="Slurp Logo" class="logo-svg" class="logo-svg">
+                            <img src="{% static 'images/slurp-logo.svg' %}" alt="Slurp Logo" class="logo-svg" class="logo-svg">
                         </div>
                         <div class="header-logo">
                             <h2 class="logo-font dark-text my-0 text-uppercase"><strong>Slurp</strong><br><span class="noto-text-light">Ramen</span></h2>
@@ -220,7 +220,7 @@
             <div class="col-md-4">
                 <div class="d-flex align-items-center">
                     <div class="mr-2 footer-logo">
-                        <img src="{{ MEDIA_URL }}slurp-logo.svg" alt="Slurp Logo" class="logo-svg" alt="Slurp Logo" class="logo-svg">
+                        <img src="{% static 'images/slurp-logo.svg' %}" alt="Slurp Logo" class="logo-svg" alt="Slurp Logo" class="logo-svg">
                     </div>
                     <div class="header-logo">
                         <h2 class="logo-font dark-text my-0 text-uppercase"><strong>Slurp</strong><br><span class="noto-text-light">Ramen</span></h2>
