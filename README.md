@@ -25,9 +25,14 @@
   * [**Manual Testing**](#manual-testing)
   * [**Code Validation**](#code-validation)
     * [**Jigsaw**](#jigsaw)
-    * [**Flake8 Python**](#python Testing)
+    * [**Pep8 Python**](#python Testing)
     * [**W3C HTML**](#w3c-html)
+    * [**JSHINT**](#jshint)
     * [**Lighthouse**](#lighthouse)
+      * [**Home**](#lighthouse-home)
+      * [**Menu**](#lighthouse-menu)
+      * [**Contact**](#lighthouse-contact)
+      * [**Bookings**](#lighthouse-bookings)
 
 * [**Deployment**](#deployment)
   * [**Create a databse**](#create-a-database)
@@ -63,7 +68,7 @@ In this project, I adopted a streamlined agile approach using GitHubs issue trac
 The tasks were through various stages on the board, From "To Do" to "In Progress" and ultimately to "Completed" once the acceptance criteria were met.
 This ensured a transparent, efficient worflow, with task being cheked and validated against the criteria before being marked as finished.
 
-![Checkout Page Wireframe](static/images/screenshots/agile-method.png)
+![Agile Method](static/images/screenshots/agile-method.png)
 
 ### User Stories
 
@@ -374,4 +379,53 @@ Status: Unfixed
 |-----------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------------|
 | Defensive programming                         | Test if the site handles errors and invalid inputs properly.        | Site should not break and should handle invalid inputs gracefully.        | Pass                                     |
 | User credentials and data access              | Test if users with correct credentials can access their data.      | Only users with valid credentials should be able to view their own data.  | Pass  
+
+## Code Validation
+
+### Jigsaw
+
+Jigsaw was used to validate CSS code. No errors.
+
+### Pep8 Python
+
+Pep was used to validate python code
+
+### JSHINT
+
+JSHINT was used to validate Python code. Only result of note is a report of undefined variable for stripe, which doesn't acknowledge Stipes library being loaded, so it is a false positive.
+
+### WCS Schools
+
+w3 schools was used to validate html code, some errors were reported but were due to rendering issues with Django templates, which were unavoidable.
+
+## Lighthouse
+
+### Home Page
+
+![Home page lighthouse](static/images/screenshots/lighthouse-home.png)
+
+### Menu Page
+
+![Home page lighthouse](static/images/screenshots/lighthouse-menu.png)
+
+### Contact Page
+
+![Home page lighthouse](static/images/screenshots/lighthouse-contact.png)
+
+### Booking Page
+
+![Home page lighthouse](static/images/screenshots/lighthouse-booking.png)
+
+### Lighhouse score review
+
+The best practices score was low on all pages, due to issues with stripe which is unavoidbale, also on pages, where media was being sourced from AWS, that brought the performance down.
+
+
+
+
+
+
+
+
+
 
