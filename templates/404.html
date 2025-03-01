@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex">
+        <img src="{% static 'images/logo.svg' %}">
+        <h1>SLurp<br>Ramen</h1>
+    </div>
+    <h2>Oops</h2>
+    <p>It seems the page you're looking for doesn't exist</p>
+    <a href="{% url 'home' %}" class="btn text-white bg-black">Go Back Home</a>
+</div>
+
+{% endblock %}
+

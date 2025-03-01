@@ -31,3 +31,5 @@ urlpatterns = [
     path('bookings/', include('bookings.urls')),
     path('newsletter/', include('newsletter.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = "home.views.custom_404"

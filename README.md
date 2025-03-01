@@ -523,11 +523,435 @@ else:
 
 `python-3.11.11`
 
-8. Return to Heroku dashboard and click Open app, copy the url in your browser window.
+8. Return to Heroku dashboard and click Open app, copy the url.
 
 9. Go back to settings.py, add the copied URL the the ALLOWED_HOSTS, ensuring to remove https:// from url start.
 
-10. 
+### Installing gunicorn
+
+1. In the vscode terminal install gunicorn using
+
+`pip3 install gunicorn`
+
+2. Freeze updated dependencies into requirements.txt file.
+
+`pip3 freeze --local > requirements.txt`
+
+3. Save, commit and push all changes to github.
+
+### Prepare Herkoku settings
+
+1. Go back to Heroku, navigate to app settings.
+
+2. Open config vars.
+
+3. Create new environment variable and name in DISABLE_STATIC with a value of 1, temporarily preventing Heroku from uploading Heroku from uploading static files.
+
+4. Create a new environment variable called SECRET_KEY and set value to any random string, this should be different than the secret key set env.py in IDE.
+
+### Deploy the app
+
+1. On Heroku dashboard, select the deploy tab.
+
+2. Scroll to the deployment method tab and select github to connect to github repository.
+
+3. Search for the repository name, then click connect.
+
+4. Click the Enable Deploys button to ensure anytime you push code to github repositoy, Heroku will also update.
+
+5. Click Deploy Branch.
+
+7. Build may take several minutes, once completed, click on Open app. Because static files are not yet collected, will look different but should be functional.
+
+### Conditionally set to DEBUG
+
+1. Once confirmed project has deployed, navigate back to settings.py in vscode and add this line of code to ensure that debug is only set to true in the development environment.
+
+`DEBUG = 'DEVELOPMENT' in os.environ`
+
+2. In env.py file, add a new environment variable for DEVELOPMENT and set it to '1'.
+
+`os.environ.setdefault('DEVELOPMENT', '1')`
+
+3. Add, commit and push changes to Github.
+
+###  Setting up AWS bucket
+
+1. Open new browser windown and navigate to https://aws.amazon.com/.
+
+2. If no existing account, click create account, enter in email and password.
+
+3. Sign in to AWS with email and password.
+
+4. Once signed in, navigate to AWS Management Console.
+
+5. Using the search bar, type S3 and choose S3 from options.
+
+6. Click create new bucket.
+
+7. Create a new bucket by
+  - Entering in name
+  - Select 'ACLs enabled'
+  - Select bucket ownder preferred
+  - Deselect 'Block all public access'
+  - Check the box to acknowledge the risk of public access.
+  - Leave the other options unchanged and click 'Create bucket'
+
+  8. When bucket is created click on the bucket name to view the bucket details.
+
+  9. Click on the 'Properties' tab. 
+
+  10. Scroll down to the 'static website hosting' section and click 'Edit'.
+
+  11. Click enable.
+
+  12. Enter 'index.html' (without quotes) into the index document input.
+
+  13. Enter 'error.html' (without quotes) into the Error document input.
+
+  14. Click 'Save Changes'.
+
+  15. Click on the permissions tab.
+
+  16. Scroll down to the Cross-origin resource sharing (CORS) section and click 'Edit'.
+
+  17. Add the following code for the CORS settings and click 'Save Changes'.
+
+  ```python
+  [
+{
+"AllowedHeaders": ["Authorization"],
+"AllowedMethods": ["GET"],
+"AllowedOrigins": ["*"],
+"ExposeHeaders": []
+}
+]
+```
+
+18. On the permissions tab of the S3 bucket, scroll to the 'Bucket Policy' section and click 'Edit', then click 'Policy Generator'.
+
+19. In the new tab that opens:
+
+- For policy type select 'S3 Bucket Policy'.
+- For the principle enter '*' (without quotes).
+- For action select 'Get Object' from the dropdown.
+
+20. Go back to bucket policy editor and click the copy button to copy the ARN.
+
+21. Then, go back to the Policy Generator in the other tab, paste the the ARN into the ARN input and click 'Add Statement'.
+
+22. Scroll down and click 'Generate Policy'.
+
+23. Copy all of the text in the popup.
+
+24. go back to the policy editor in the other tab and past in the policy code.
+
+25. Edit 'Resource' value by adding '/*' to the end, to allow access to all objects within the bucket, should look like the below but with ARN that has been copied:
+
+```python
+{
+"Version": "2012-10-17",
+"Id": "Policy1720032710777",
+"Statement": [
+{
+"Sid": "Stmt1720024120521",
+"Effect": "Allow",
+"Principal": "*",
+"Action": "s3:GetObject",
+"Resource": "YOUR_ARN/*"
+}
+]
+}
+```
+26. Scroll down to the bottom and click 'Save Changes'.
+
+27. Back in the permissions tab, scroll down to the Access Control list section and click 'Edit'.
+
+28. On the 'Edit Access control list' page:
+
+- Click 'List' in the Everyone(public access)
+- Click the checkbox to indicate understanding of changes.
+
+29. Click 'Save Changes'.
+
+### Create AWS Groups, Policies and Users
+
+1. Search for 'iam' in the search bar.
+
+2. Click on 'IAM'.
+
+3. Click 'User Groups'.
+
+4. Click 'Create Group'.
+
+5. Enter group name (I chose slurp-rame).
+
+6. Scroll down to the bottom and click 'Create User Group'.
+
+7. Click 'Policies' in the menu on the left.
+
+8. Click 'Create Policy'.
+
+9. Click on the 'JSON' tab'.
+
+10. Click on 'Actions' dropdown.
+
+11. Click 'Import Policy'.
+
+12. Search for 's3'.
+
+13. Select 'AmazonS3FullAccess'.
+
+14. Click 'Import Policy'.
+
+15. Search 's3' at the top.
+
+16. Right click on 'S3'/
+
+17. Click 'Open in new tab'.
+
+18. In the new tab:
+
+- Select your bucket.
+- Click 'Copy ARN'
+
+19. Go back to previous tab and add ARN in quotes to the 'Resource' list twice, add /* after the second one. Policy shoud look like the below:
+
+```python
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+"Sid": "Statement1",
+"Effect": "Allow",
+"Action": [
+"s3:*"
+],
+"Resource": [
+"arn:aws:s3:::slurp-ramen-bucket",
+"arn:aws:s3:::test-bucket-bucket/*"
+]
+}
+]
+}
+```
+
+20. Scroll down to the bottom and click 'Next'.
+
+21. Enter policy name and description.
+
+22. Scroll down and click 'Create Policy', and you will see a success message.
+
+23. Click 'User Groups' in the menu to the left.
+
+24. Click on your group.
+
+25. Click on the 'Permissions' tab.
+
+26. Click on 'Add permissions' dropdown.
+
+27. Click 'Attach policies'.
+
+28. Search for the policy name (slurp ramen)
+
+29. Select the checkboxes beside that policy.
+
+30. Click 'Attach policies'.
+
+31. Click 'Users' in the menu on the left.
+
+32. Click 'Create User'.
+
+33. Enter a user name.
+
+34. Click 'Next'.
+
+25. Select the group you created previously.
+
+26. Click 'Next'.
+
+27. Scroll down and click 'Create user'.
+
+28. Click on the new user.
+
+29. Click 'Security credentials'.
+
+30. Scroll down to the 'Access keys' section and click 'Create access key'.
+
+31. Select 'Application running outside AWS'
+
+32. Click 'Next'
+
+33. Click 'Create access key'.
+
+34. Scroll down and click 'Download .csv file'.
+
+25. Click done.
+
+26. Open the .csv file in any text editor.
+
+27. The two values will be seperated by a comma, and are the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY for Heroku config vars.
+
+### Connecting to Django
+
+1. To connect django to s3, install the required packages.
+
+`pip3 install boto3 django-storages`
+
+2. Update the requirments.txt so these packages are installed in Heroku environment.
+
+`pip3 freeze > requirements.txt`
+
+3. Add storages to installed apps by navigating to settings.py and adding 'storages' to the list of INSTALLED_APPS.
+
+4. To Configuare django to communicate with the S3 bucket. This should only apply when running on Heroku. We need to add an if statment to check for the USE_AWS environment variable.
+
+```python
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+```
+
+5. Go to Herokus config vars and add the following variables:
+
+```python
+USE_AWS=true
+AWS_STORAGE_BUCKET_NAME
+AWS_S3_REGION_NAME
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+```
+
+6. While in Heroku settings, remove DISABLE_STATIC variable so Django automatically uploads static files to s3 during deployment.
+
+7. In settings.py, specify where static files will be stored in production by adding:
+
+```python
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+```
+
+8. Create a new file in any app in your project and name it custom_storages.py, and add the following code:
+
+```python
+from django.conf import settings
+from storages.backends.s3boto3 import S3Boto3Storage
+
+class StaticStorage(S3Boto3Storage):
+    location = settings.STATICFILES_LOCATION
+
+class MediaStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_LOCATION
+```
+
+9. In settings.py, define the locations and specify the storage classes:
+
+```python
+STATICFILES_LOCATION = 'static'
+MEDIAFILES_LOCATION = 'media'
+
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+```
+
+10. Git add, commit and push changes to deploy to heroku, during deployment heroku will run:
+
+`python3 manage.py collectstatic`
+
+11. Verify deployment by checking Heroku build log to confirm static files were created successfully.
+
+### Caching, Media Files and Stripe
+
+1. Go to S3 bucket, create new folder called media.
+
+2. Inside new folder click upload.
+
+3. Click add files.
+
+4. Select all media images for site and click 'Open'.
+
+6. Under 'Manage public permsions' click 'Grant Public Read Access'.
+
+7. Click 'Next' end and click 'Upload'.
+
+8. Sign into admin and 'Add new user'.
+
+9. Verfify their email address by clicking 'Primary' and 'Verifed', then click 'Save'.
+
+### Stripe
+
+1. Log into Stripe account.
+
+2. Click on Developers.
+
+3. Click on API keys.
+
+4. Copy the secret_key and publishable_key.
+
+5. Copy those values into Heroku config vars as STRIPE_SECRET_KEY and STRIPE_PUBLIC_KEY
+
+6. GO back to Stripe dashboard. 
+
+7. Click 'Developers', then click 'Webhooks'.
+
+8. Click 'Add endpoint'
+
+9. Paste in the url from the deployed website, adding in 'checkout/wh/' to the end of the URL.
+
+10. Select 'All Events'.
+
+11. Click 'Add Events'.
+
+12. Scroll down to the bottom of the page, then click 'Add endpoint'.
+
+13. Click 'Reveal' to access the signing secret for the new endpoint. Copy the secret provided.
+
+14. Go back to Heroku dhasboard for the app, then settings tab and config vars.
+
+15. Add new variable called STRIPE_WH_SECRET to set the signing secret with the value just copied from stripe. 
+
+16. Redeploy the app to ensure environment variable is accessible.
+
+### Testing Webhooks
+
+1. To Test unhandled and payment intent succeeded webhook navigat to deployed app in the browser by go to heroku deploy tab and clicking 'Open app'.
+
+2. Enter the credit card number 4242 4242 4242 4242, a valid expiry date, any random 3 digit CVC code and any 5 digit zip code, then click 'Complete Order'.
+
+3. Return to Webhooks tab in the Developers dashboard and click on webhooks, then click on the end point created.
+
+4. CLick on payment intent succeeded, a 200 response confirms the webhook has been delivered successfully.
+
+5. To check payment intent failed, navigate back to deployed site, create an order, and at the checkout page enter in delivery details, enter in credit card number 4000 0000 0000 0002, a valid expiry, and any CVC and zip code.
+
+6. Click on 'Complete Order'.
+
+7. Naviate back to stripe dashboard, webhooks then click on endpoint.
+
+8. Click on payment intent failed, and it will confirm id payment intent failed has been successful recieved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
