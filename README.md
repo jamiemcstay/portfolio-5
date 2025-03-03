@@ -398,6 +398,8 @@ JSHINT was used to validate Python code. Only result of note is a report of unde
 
 w3 schools was used to validate html code, some errors were reported but were due to rendering issues with Django templates, which were unavoidable.
 
+![HTML Validation](static/images/screenshots/w3-schools.png)
+
 ## Lighthouse
 
 ### Home Page
