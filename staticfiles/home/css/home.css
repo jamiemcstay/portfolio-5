@@ -1,11 +1,11 @@
-main {
+    main {
     height: 80vh;
     position: relative;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/media/images/ramen_background.jpg');
+    background-image: url("/static/images/ramen_background.jpg ");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
