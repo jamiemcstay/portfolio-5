@@ -2,6 +2,11 @@
 
 ![Am I Responsive Screenshot](static/images/screenshots/am-i-responsive.png)
 
+[Live Site](https://slurp-ramen-a93fd0360d69.herokuapp.com/)
+
+[Github Repository](https://github.com/jamiemcstay/portfolio-5)
+
+
 ## Table of Contents
 
 * [**Planning Phase**](#planning)
@@ -966,7 +971,7 @@ DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 8. Click on payment intent failed, and it will confirm id payment intent failed has been successful recieved.
 
 
-* [**Technologies**](#credits)
+# Technology
 
 The technologies used for the following were:
 
@@ -981,15 +986,15 @@ The technologies used for the following were:
 - AWS
 
 
-* [**Credits**](#credits)
+#Credits
 
 All images were found on google images.
 
-Content from Youtube, W3 schools was followed.
+Content from Youtube, W3 schools was consulted. 
 
 Code for the bag app, checkout app and webhooks was followed closely to the Boutique Ado walk through from the code institute.
 
-* [**Acknowledgments**](#acknowledgements)
+# Acknowledgments
 
 I would like to the thank the Code Institute, staff and tutors for the help throughout the project. Special thanks for Richard Wells for his advice throughout the development of this project.
 
