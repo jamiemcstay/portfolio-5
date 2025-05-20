@@ -208,6 +208,11 @@ footer {
     transform: translate3d(-15px, 40px, 0px)!important;
 }
 
+.four-btn {
+    background-color: black;
+    padding: 12.5px;
+    border-radius: 25px;
+}
 
 @media screen and (max-width: 991px) {
     .main-logo-link {
