@@ -20,10 +20,11 @@
     <h3 class="slurp-text-black noto-text-light noto-serif">{{ category_key }}</h3>
     <div class="row menu-row">
         {% for item in items %}
+        {% with unique_id=category_key|slugify|stringformat:"s" %}
         <div class="col-md-3 mb-5">
             <div class="card menu-card d-flex flex-column">
                 {% if item.image %}
-                <a href="#" data-toggle="modal" data-target="#itemModal{{ item.id}}">
+                <a href="#" data-toggle="modal" data-target="#itemModal{{ unique_id }}_{{ item.id }}">
                     <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
                     {% elif item.image_url %}
                     <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
@@ -46,12 +47,12 @@
 
             </div>
         </div>
-        <div class="modal fade" class="itemModal{{ item.id }}" tabindex="-1" role="dialog"
-        aria-labelledby="itemModalLabel{{ item.id }}" aria-hidden="true">
+        <div class="modal fade" id="itemModal{{ unique_id }}_{{ item.id }}" tabindex="-1" role="dialog"
+        aria-labelledby="itemModalLabel{{ unique_id }}_{{ item.id }}" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="itemModalLabel{{ item.id }}">{{ item.name }}</h5>
+                    <h5 class="modal-title" id="itemModalLabel{{ unique_id }}_{{ item.id }}">{{ item.name }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -72,17 +73,17 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button class="decrement-qty btn" data-item_id="{{ item.id }}" id="decrement-qty_{{ item.id }}">
+                                            <button class="decrement-qty btn" data-item_id="{{ item.id }}" id="decrement-qty_{{ unique_id }}_{{ item.id }}">
                                                 <span class="icon">
                                                     <i class="fa fa-minus"></i>
                                                 </span>
 
                                             </button>
                                         </div>
-                                        <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ item.id }}" id="id_qty_{{ item.id }}">
+                                        <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ item.id }}" id="id_qty_{{ unique_id }}_{{ item.id }}">
                                         <div class="input-group-append">
                                             <button class="increment-qty btn btn-black rounded-0"
-                                                data-item_id="{{ item.id }}" id="increment-qty_{{ item.id }}">
+                                                data-item_id="{{ item.id }}" id="increment-qty_{{ unique_id }}_{{ item.id }}">
                                                 <span class="icon">
                                                     <i class="fas fa-plus"></i>
                                                 </span>
@@ -99,6 +100,7 @@
             </div>
         </div>
         </div>
+        {% endwith %}
         {% endfor %}
     </div>
     
