@@ -9,11 +9,11 @@
 <div class="home-overlay"></div>
 <div class="content d-flex flex-column">
     <div class="logo-container mx-auto">
-        <img src="{% static 'images/slurp-logo.svg' %}" alt="Slurp Logo" class="logo-svg" alt="Slurp Logo" class="logo-svg">
+        <img src="{% static 'images/slurp-logo.svg' %}" alt="Slurp Logo" class="logo-svg">
     </div>
     <h1 class="logo-font slurp-text-off-white my-0 text-uppercase">
         <strong>Slurp</strong><br><span class="nano-text-light">Ramen</span></h1>
-    <a href="{% url 'menu'}" class="home-page-button btn btn-primary slurp-text-off-white mx-auto">Order Now</a>
+    <a href="{% url 'menu' %}" class="home-page-button btn btn-primary slurp-text-off-white mx-auto">Order Now</a>
 </div>
 
 {% block styles %}
