@@ -31,10 +31,7 @@ class BookingForm(forms.ModelForm):
             'reservation_date': forms.DateTimeInput(attrs={'class':
                                                            'form-control',
                                                            'type':
-                                                           'datetime-local',
-                                                           'placeholder':
-                                                           'Select date and \
-                                                           time'}),
+                                                           'datetime-local'}),
             'special_requests': forms.Textarea(
                 attrs={'class': 'form-control',
                                 'rows': 4, 'placeholder':
