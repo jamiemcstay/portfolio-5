@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /accounts/
-Disallow: /bag/
-Disallow: /menu/add/
-Disallow: /menu/edit/
-Disallow: /menu/delete/
-Sitemap: https://slurp-ramen-a93fd0360d69.herokuapp.com/sitemap.xml

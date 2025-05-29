@@ -18,6 +18,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from home.views import custom_404
+from django.views.static import serve
+import os
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +32,18 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('bookings/', include('bookings.urls')),
     path('newsletter/', include('newsletter.urls')),
+    # Serve static robots.txt at root URL
+    path("robots.txt", serve, {
+        'path': 'robots.txt',
+        'document_root': os.path.join(settings.BASE_DIR, 'static'),
+    }),
+
+    # Serve static sitemap.xml at root URL
+    path("sitemap.xml", serve, {
+        'path': 'sitemap.xml',
+        'document_root': os.path.join(settings.BASE_DIR, 'static'),
+    }),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "home.views.custom_404"
