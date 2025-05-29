@@ -32,13 +32,11 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('bookings/', include('bookings.urls')),
     path('newsletter/', include('newsletter.urls')),
-    # Serve static robots.txt at root URL
     path("robots.txt", serve, {
         'path': 'robots.txt',
         'document_root': os.path.join(settings.BASE_DIR, 'static'),
     }),
 
-    # Serve static sitemap.xml at root URL
     path("sitemap.xml", serve, {
         'path': 'sitemap.xml',
         'document_root': os.path.join(settings.BASE_DIR, 'static'),
